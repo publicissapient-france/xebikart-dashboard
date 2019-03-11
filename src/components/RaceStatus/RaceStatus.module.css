@@ -1,0 +1,14 @@
+.waiting {
+  color: red;
+  background-color: black;
+}
+
+.started {
+  color: yellow;
+  background-color: black;
+}
+
+.finished {
+  color: green;
+  background-color: black;
+}
