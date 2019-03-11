@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: install deps
+          command: npm install
+      - run:
+          name: build
+          command: npm run build
+
