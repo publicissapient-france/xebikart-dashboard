@@ -24,7 +24,7 @@ docker run -d -p 8080:80 -e "BACKEND_HOST=backend.prv" -e "BACKEND_PORT=8080" xe
 
 ## Howto build it ?
 
-Using `Make`, `Yanr` and `Docker`:
+Using `Make`, `Yarn` and `Docker`:
 
 ```bash
 make docker
