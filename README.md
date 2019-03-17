@@ -44,3 +44,13 @@ make docker VERSION=dev
 ```
 
 it will produce an image with following tag : `xebikart/dashboard:dev`
+
+## Architectural Decision Records
+
+You may find ours [ADR in this directory](doc/adr) :
+
+* [Use SSE as echange data technology between back and front](doc/adr/001-use-SSE-as-exchange-data-technology-between-back-and-front.md)
+
+## Communication
+
+You could join us on slack `xebiafr` channel `#xebikart-dashboard` or by mention `@xebikart-team-dashboard` .
