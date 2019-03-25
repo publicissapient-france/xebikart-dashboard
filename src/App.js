@@ -1,13 +1,16 @@
 import React from 'react';
 
-import RaceStatus from './components/RaceStatus/RaceStatus';
+import Dashboard from './components/Dashboard/Dashboard';
 
 import styles from './App.module.css';
+
+import logo from './logo.png'
 
 export default () => {
   return (
     <div className={styles.container}>
-      <RaceStatus status="waiting" />
+      <img className={styles.logo} src={logo} />
+      <Dashboard className={styles.dashboard} />
     </div>
   );
 }

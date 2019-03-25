@@ -1,14 +1,35 @@
-.waiting {
-  color: red;
-  background-color: black;
+.container {
+  display: flex;
+  justify-content: space-between;
 }
 
-.started {
-  color: yellow;
-  background-color: black;
+.statusButton {
+  text-align: center;
+  width: 183px;
+  height: 54px;
+  border-radius: 89px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  line-height: 54px;
+  opacity: 0.5;
 }
 
-.finished {
-  color: green;
-  background-color: black;
+.statusButton.STARTED {
+  background-color: #63c18b;
+  border: 2px solid green;
+}
+
+.statusButton.AWAITING {
+  background-color: #EB5757;
+  border: 2px solid red;
+}
+
+.statusButton.FINISHED {
+  background-color: #2D9CDB;
+  border: 2px solid blue;
+}
+
+.statusButton.active {
+  opacity: 1;
 }
