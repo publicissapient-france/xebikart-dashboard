@@ -1,12 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import styles from './Cars.module.css';
+import styles from './RaceChrono.module.css';
 
 export default ({className}) => {
   return (
     <div className={classnames(styles.container, className)}>
-    CARS
+      CHRONO
+      <div className={styles.time}>
+        00:00:00
+      </div>
     </div>
   );
 }

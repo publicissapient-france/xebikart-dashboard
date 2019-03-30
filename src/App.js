@@ -9,7 +9,7 @@ import logo from './logo.png'
 export default () => {
   return (
     <div className={styles.container}>
-      <img className={styles.logo} src={logo} />
+      <img className={styles.logo} src={logo} alt="Xebikart" />
       <Dashboard className={styles.dashboard} />
     </div>
   );

@@ -5,14 +5,14 @@
 
 .statusButton {
   text-align: center;
-  width: 183px;
-  height: 54px;
-  border-radius: 89px;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  line-height: 54px;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
   opacity: 0.5;
+}
+
+.text {
+  display: none;
 }
 
 .statusButton.STARTED {
@@ -33,3 +33,20 @@
 .statusButton.active {
   opacity: 1;
 }
+
+
+@media (min-width: 768px) { 
+  .statusButton {
+    width: 183px;
+    height: 54px;
+    line-height: 54px;
+    font-size: 24px;
+    border-radius: 89px;
+  }   
+  
+  .text {
+    color: white;
+    display: block;
+  }
+}
+
