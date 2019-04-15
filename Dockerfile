@@ -9,6 +9,8 @@ COPY yarn.lock    .
 
 RUN yarn install
 
+# Reminder: copy-ing a directory copies the content, so we have to make the
+# target path explicit
 COPY config ./config
 COPY src    ./src
 COPY public ./public
