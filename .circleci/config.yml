@@ -20,6 +20,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
 
+  # Image is built with the CircleCI gcp-gcr Orb
+  # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
+  # This is essentially just a convenient wrapper around `docker build`
   "Build Docker image":
     machine: true
     steps:
