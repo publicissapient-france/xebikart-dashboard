@@ -27,7 +27,6 @@ jobs:
       - gcp-gcr/build-image:
           image: xebikart-dashboard
           tag: latest
-          path-to-dockerfile: ./new-Dockerfile
           registry-url: eu.gcr.io
 
 workflows:
