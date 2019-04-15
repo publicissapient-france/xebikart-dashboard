@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  "Build":
     docker:
       - image: circleci/node:10.15.2
 
@@ -22,3 +22,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn build
+
+workflows:
+  version: 2
+  full:
+    jobs:
+      - "Build"
