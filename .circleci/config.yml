@@ -29,7 +29,6 @@ jobs:
           tag: latest
           path-to-dockerfile: Dockerfile.clean
           registry-url: eu.gcr.io
-          google-project-id: xebikart-dev-1
 
 workflows:
   version: 2
