@@ -61,3 +61,14 @@ r [Use SSE as echange data technology between back and
 
 You could join us on slack `xebiafr` channel `#xebikart-dashboard` or by
 mention `@xebikart-team-dashboard` .
+
+## Continuous Integration
+
+The Continuous Integration for this project is done with
+[CircleCI](https://circleci.com/), which is the most awesome SaaS CI at this
+moment :)
+
+In the jobs/workflow, we'll make a heavy use of [CircleCI
+Orbs](https://circleci.com/orbs/), which is a good thing because we're doing
+standard things in a standard way. We're essentially just wrapping calls that
+we could do ourselves on whatever other CI out there.
