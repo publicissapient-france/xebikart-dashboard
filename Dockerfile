@@ -1,4 +1,6 @@
 FROM node:11.14.0-alpine
+LABEL project=xebikart
+LABEL maintainer=xebikart-team-dashboard
 
 WORKDIR /sources
 
