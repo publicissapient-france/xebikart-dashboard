@@ -7,10 +7,10 @@ import RaceTurns from '../RaceTurns/RaceTurns';
 
 import styles from './RaceInfos.module.css';
 
-export default ({className}) => {
+export default ({raceStatus, className}) => {
   return (
     <div className={classnames(styles.container, className)}>
-      <RaceStatus status="AWAITING" className={styles.status} />
+      <RaceStatus status={raceStatus.state} className={styles.status} />
       <RaceChrono className={styles.chrono} />
       <RaceTurns className={styles.turns} />
     </div>
