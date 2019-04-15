@@ -1,3 +1,18 @@
+FROM node:11.14.0-alpine
+
+WORKDIR /sources
+
+COPY package.json .
+COPY yarn.lock    .
+
+RUN yarn install
+
+COPY config ./config
+COPY src    ./src
+COPY public ./public
+
+RUN yarn build
+
 FROM nginx:1.15.11-alpine
 
-COPY build/ /usr/share/nginx/html
+COPY --from=0 /sources/build /usr/share/nginx/html
