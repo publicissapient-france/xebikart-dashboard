@@ -1,4 +1,6 @@
-# Dashboard for Xebikart project
+# XebiKart - Dashboard for Xebikart project
+
+[![CircleCI](https://circleci.com/gh/xebia-france/xebikart-dashboard.svg?style=svg&circle-token=c283d660fd3ba732f794a11339ccecd726440a5a)](https://circleci.com/gh/xebia-france/xebikart-dashboard)
 
 React
 Communicates with backend via Server Side Events
