@@ -10,10 +10,10 @@ import SSEService from '../../services/sse';
 
 export default ({className}) => {
 
-  const [raceStatus, updateRaceStatus] = useState({race: {state: "AWAITING"}});
+  const [raceStatus, updateRaceStatus] = useState({race: {state: "STARTED"}});
 
   useEffect(() => {
-    const sseService = new SSEService({url : 'http://google.com', onMessage : handleReceiveStatus});
+    const sseService = new SSEService({url : '/events', onMessage : handleReceiveStatus});
     return () => {
       sseService.unsubscribe();
     };
