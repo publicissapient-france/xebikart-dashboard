@@ -33,6 +33,6 @@ workflows:
   full:
     jobs:
       - "Build"
-      - "Build Docker image"
+      - "Build Docker image":
           requires:
             - "Build"
