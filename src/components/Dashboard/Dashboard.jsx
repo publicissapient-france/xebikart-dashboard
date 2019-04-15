@@ -6,7 +6,7 @@ import RaceInfos from '../RaceInfos/RaceInfos';
 import styles from './Dashboard.module.css';
 import RaceTrack from '../RaceTrack/RaceTrack';
 
-import SSEService from '../../services/sse  ';
+import SSEService from '../../services/sse';
 
 export default ({className}) => {
 
