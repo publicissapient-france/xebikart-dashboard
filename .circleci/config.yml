@@ -36,5 +36,6 @@ workflows:
     jobs:
       - "Build"
       - "Build Docker image":
+          context: "XebiKart - GCP/GKE Deployment"
           requires:
             - "Build"
