@@ -21,8 +21,7 @@ jobs:
       - run: yarn build
 
   "Build Docker image":
-    docker:
-      - image: circleci/node:11.14.0
+    machine: true
     steps:
       - checkout
       - gcp-gcr/build-image:
