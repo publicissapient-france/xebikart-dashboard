@@ -38,6 +38,7 @@ jobs:
   # This is essentially just a convenient wrapper around `docker push`
   "Push Docker image to GCR":
     machine: true
+      docker_layer_caching: true
     steps:
       - checkout
       - gcp-gcr/push-image:
