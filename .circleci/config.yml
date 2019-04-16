@@ -22,7 +22,8 @@ jobs:
       - run: yarn build
 
   "Login to GCP":
-    executor: gcp-cli/default
+    docker:
+      - image: google/cloud-sdk:latest
     steps:
       - gcp-cli/initialize
 
