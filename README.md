@@ -71,4 +71,5 @@ moment :)
 In the jobs/workflow, we'll make a heavy use of [CircleCI
 Orbs](https://circleci.com/orbs/), which is a good thing because we're doing
 standard things in a standard way. We're essentially just wrapping calls that
-we could do ourselves on whatever other CI out there.
+we could do ourselves on whatever other CI out there such as `docker build
+[...]`, `gcloud auth [...]` or `kubectl apply [...]`
