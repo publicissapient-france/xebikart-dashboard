@@ -42,13 +42,18 @@ jobs:
           root: .
           paths:
             - docker-images/xebikart-dashboard.tar
+  
+  "Login to GCP":
+    docker:
+      - image: google/cloud-sdk:latest
+    steps:
+      - gcp-cli/initialize
+
 
   # Image is pushed to GCR with the CircleCI gcp-gcr Orb
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
   # This is essentially just a convenient wrapper around `docker push`
   "Push Docker image to GCR":
-    #executor:
-    #  name: gcp-cli/google
     machine:
       docker_layer_caching: true
     steps:
@@ -63,6 +68,16 @@ jobs:
           tag: latest
           registry-url: eu.gcr.io
 
+  "Deploy to GKE":
+    executor:
+      name: gcp-cli/google
+    steps:
+      - run:
+          name: Deploy to GKE
+          command: |
+            kubectl cluster-info
+
+
 workflows:
   version: 2
   full:
@@ -76,3 +91,10 @@ workflows:
           context: "XebiKart - GCP/GKE Deployment"
           requires:
             - "Build Docker image"
+      - "Login to GCP":
+          context: "XebiKart - GCP/GKE Deployment"
+      - "Deploy to GKE":
+          context: "XebiKart - GCP/GKE Deployment"
+          requires:
+            - "Login to GCP"
+            - "Push Docker image to GCR"
