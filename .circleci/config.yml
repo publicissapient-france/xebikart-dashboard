@@ -20,6 +20,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
 
+  "Login to GCP":
+    google: true
+    steps:
+      - gcp-cli/initialize
+
   # Image is built with the CircleCI gcp-gcr Orb
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
   # This is essentially just a convenient wrapper around `docker build`
@@ -68,7 +73,9 @@ workflows:
           context: "XebiKart - GCP/GKE Deployment"
           requires:
             - "Build"
+      - "Login to GCP"
       - "Push Docker image to GCR":
           context: "XebiKart - GCP/GKE Deployment"
           requires:
             - "Build Docker image"
+            - "Login to GCP"
