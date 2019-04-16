@@ -53,7 +53,8 @@ jobs:
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
   # This is essentially just a convenient wrapper around `docker push`
   "Push Docker image to GCR":
-    google:
+    executor:
+      name: google
       docker_layer_caching: true
     steps:
       - attach_workspace:
