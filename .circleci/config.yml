@@ -54,7 +54,7 @@ jobs:
   # This is essentially just a convenient wrapper around `docker push`
   "Push Docker image to GCR":
     executor:
-      name: google
+      name: gcp-cli/google
       docker_layer_caching: true
     steps:
       - attach_workspace:
