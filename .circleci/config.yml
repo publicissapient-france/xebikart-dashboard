@@ -53,3 +53,7 @@ workflows:
           context: "XebiKart - GCP/GKE Deployment"
           requires:
             - "Build"
+      - "Push Docker image to GCR":
+          context: "XebiKart - GCP/GKE Deployment"
+          requires:
+            - "Build Docker image"
