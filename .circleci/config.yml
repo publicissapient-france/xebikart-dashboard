@@ -22,7 +22,7 @@ jobs:
       - run: yarn build
 
   "Login to GCP":
-    google: true
+    executor: google
     steps:
       - gcp-cli/initialize
 
