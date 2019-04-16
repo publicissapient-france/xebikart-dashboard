@@ -34,11 +34,13 @@ jobs:
           registry-url: eu.gcr.io
       - run:
           name: Export Docker image so it can be cached
-          command: docker save --output docker-image/xebikart-dashboard.tar eu.gcr.io/${GOOGLE_PROJECT_ID}/xebikart-dashboard:latest
+          command: |
+            mkdir docker-images/
+            docker save --output docker-images/xebikart-dashboard.tar eu.gcr.io/${GOOGLE_PROJECT_ID}/xebikart-dashboard:latest
       - save_cache:
           paths:
-            - docker-image
-          key: v1-dockerimg-{{ checksum "docker-image/xebikart-dashboard.tar" }}
+            - docker-images
+          key: v1-dockerimg-{{ checksum "docker-images/xebikart-dashboard.tar" }}
 
   # Image is pushed to GCR with the CircleCI gcp-gcr Orb
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
