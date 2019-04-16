@@ -75,6 +75,7 @@ workflows:
           requires:
             - "Build"
       - "Login to GCP"
+          context: "XebiKart - GCP/GKE Deployment"
       - "Push Docker image to GCR":
           context: "XebiKart - GCP/GKE Deployment"
           requires:
