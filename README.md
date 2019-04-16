@@ -73,3 +73,12 @@ Orbs](https://circleci.com/orbs/), which is a good thing because we're doing
 standard things in a standard way. We're essentially just wrapping calls that
 we could do ourselves on whatever other CI out there such as `docker build
 [...]`, `gcloud auth [...]` or `kubectl apply [...]`
+
+Features used:
+
+- [Docker layer caching](https://circleci.com/docs/2.0/docker-layer-caching/)
+- [Orbs](https://circleci.com/orbs/)
+  ([Intro](https://circleci.com/docs/2.0/orb-intro/) /
+  [Registry](https://circleci.com/orbs/registry/)]
+    - [gcp-gcr](https://circleci.com/orbs/registry/orb/circleci/gcp-gcr) to
+      build Docker images and push them to GCR
