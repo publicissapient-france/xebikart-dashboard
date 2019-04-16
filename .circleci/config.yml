@@ -38,7 +38,7 @@ jobs:
             mkdir docker-images/
             docker save --output docker-images/xebikart-dashboard.tar eu.gcr.io/${GOOGLE_PROJECT_ID}/xebikart-dashboard:latest
       - persist_to_workspace:
-          root:: .
+          root: .
           paths:
             - docker-images/xebikart-dashboard.tar
 
