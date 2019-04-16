@@ -24,7 +24,7 @@ jobs:
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
   # This is essentially just a convenient wrapper around `docker build`
   "Build Docker image":
-    machine: true
+    machine:
       docker_layer_caching: true
     steps:
       - checkout
@@ -37,7 +37,7 @@ jobs:
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
   # This is essentially just a convenient wrapper around `docker push`
   "Push Docker image to GCR":
-    machine: true
+    machine:
       docker_layer_caching: true
     steps:
       - checkout
