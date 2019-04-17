@@ -75,6 +75,7 @@ jobs:
       - run:
           name: Deploy to GKE
           command: |
+            gcloud container clusters get-credentials xebikart-gke-dev-1
             kubectl cluster-info
 
 
@@ -82,7 +83,6 @@ workflows:
   version: 2
   full:
     jobs:
-      - "Build app"
       - "Build Docker image":
           context: "XebiKart - GCP/GKE Deployment"
       - "Push Docker image to GCR":
@@ -96,3 +96,4 @@ workflows:
           requires:
             - "Login to GCP"
             - "Push Docker image to GCR"
+      - "Build app"
