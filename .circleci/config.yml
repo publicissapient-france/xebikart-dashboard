@@ -46,6 +46,7 @@ jobs:
           root: .
           paths:
             - docker-images/xebikart-dashboard.tar
+            - k8s-manifests
 
   # Image is pushed to GCR with the CircleCI gcp-gcr Orb
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
@@ -69,6 +70,9 @@ jobs:
     executor:
       name: gcp-cli/google
     steps:
+      # Get k8s-manifests
+      - attach_workspace:
+          at: .
       - gcp-cli/initialize
       - run:
           name: "Get Kubernetes cluster  credentials"
