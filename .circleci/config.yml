@@ -67,6 +67,12 @@ jobs:
     steps:
       - gcp-cli/initialize
       - run:
+          name: Get Kubernetes cluster  credentials
+          command: gcloud container clusters get-credentials xebikart-gke-dev-1
+      - run:
+          name: [Debug] Show cluster infos
+          command: kubectl cluster-info
+      - run:
           name: Deploy to GKE
           command: |
             gcloud container clusters get-credentials xebikart-gke-dev-1
