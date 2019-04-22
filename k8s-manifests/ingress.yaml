@@ -4,6 +4,7 @@ metadata:
   name: xebikart-dashboard-ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: dashboard.xebik.art.
+    external-dns.alpha.kubernetes.io/ttl: "60"
 spec:
   backend:
     serviceName: xebikart-dashboard
