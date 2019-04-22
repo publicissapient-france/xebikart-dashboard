@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: xebikart-dashboard-ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: dashboard.xebik.art.
+spec:
+  backend:
+    serviceName: xebikart-dashboard
+    servicePort: 80
+
