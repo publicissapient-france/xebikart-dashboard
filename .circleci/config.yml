@@ -79,8 +79,6 @@ jobs:
       - run:
           name: "Deploy to GKE"
           command: kubectl apply -f k8s-manifests
-            gcloud container clusters get-credentials xebikart-gke-dev-1
-            kubectl cluster-info
 
 
 workflows:
