@@ -14,12 +14,16 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: yarn install
+      - run:
+          name: "Install dependencies"
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn build
+      - run:
+          name: "Build app"
+          command: yarn build
 
   # Image is built with the CircleCI gcp-gcr Orb
   # https://circleci.com/orbs/registry/orb/circleci/gcp-gcr
@@ -34,7 +38,7 @@ jobs:
           tag: latest
           registry-url: eu.gcr.io
       - run:
-          name: Export Docker image so it can be persisted to workspace
+          name: "Export Docker image so it can be persisted to workspace"
           command: |
             mkdir docker-images/
             docker save --output docker-images/xebikart-dashboard.tar eu.gcr.io/${GOOGLE_PROJECT_ID}/xebikart-dashboard:latest
@@ -53,7 +57,7 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Load Docker image from workspace
+          name: "Load Docker image from workspace"
           command: docker load --input docker-images/xebikart-dashboard.tar
       - gcp-gcr/gcr-auth
       - gcp-gcr/push-image:
@@ -67,13 +71,13 @@ jobs:
     steps:
       - gcp-cli/initialize
       - run:
-          name: Get Kubernetes cluster  credentials
+          name: "Get Kubernetes cluster  credentials"
           command: gcloud container clusters get-credentials xebikart-gke-dev-1
       - run:
-          name: [Debug] Show cluster infos
+          name: "[Debug] Show cluster infos"
           command: kubectl cluster-info
       - run:
-          name: Deploy to GKE
+          name: "Deploy to GKE"
           command: kubectl apply -f k8s-manifests
             gcloud container clusters get-credentials xebikart-gke-dev-1
             kubectl cluster-info
