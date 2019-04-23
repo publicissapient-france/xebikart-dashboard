@@ -13,14 +13,17 @@ export default ({className}) => {
   const [raceStatus, updateRaceStatus] = useState({race: {state: "STARTED"}});
 
   useEffect(() => {
-    const sseService = new SSEService({url : '/events', onMessage : handleReceiveStatus});
+    const sseService = new SSEService({url : 'http://state.xebik.art/events', onMessage : handleReceiveStatus});
     return () => {
       sseService.unsubscribe();
     };
   });
 
   const handleReceiveStatus = event => {
-    updateRaceStatus(event.data);
+    const parsedStatus = JSON.parse(event.data);
+    if(parsedStatus.race.state !== raceStatus.race.state) {
+      updateRaceStatus(parsedStatus);
+    }
   }
 
   return (
