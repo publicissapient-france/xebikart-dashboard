@@ -10,7 +10,7 @@ export default ({className}) => {
         <div>
           <div className={styles.carcolor}></div>
           <div className={styles.carimage}>
-            <img src="car_top.png" />
+            <img src="./car_top.png" alt="" />
           </div>
           <div className={styles.laps}>
             <span className={styles.green}></span>
