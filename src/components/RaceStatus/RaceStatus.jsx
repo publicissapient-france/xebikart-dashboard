@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import styles from './RaceStatus.module.css';
 
 export default ({status, className}) => {
-  console.log('STATUS', status);
   return (
     <div className={classnames(styles.container, className)}>
       <div className={classnames(styles.statusButton, styles.AWAITING, status === 'AWAITING' ? styles.active : undefined)}>
