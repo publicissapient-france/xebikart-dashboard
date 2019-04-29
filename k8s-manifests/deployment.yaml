@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xebikart-dashboard
+spec:
+  selector:
+    matchLabels:
+      app: xebikart
+      tier: dashboard
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: xebikart
+        tier: dashboard
+    spec:
+      containers:
+      - name: nginx-react
+        image: eu.gcr.io/xebikart-dev-1/xebikart-dashboard:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+          - containerPort: 80

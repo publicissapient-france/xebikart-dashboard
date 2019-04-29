@@ -1,13 +1,22 @@
-FROM nginx:1.14
+FROM node:11.14.0-alpine
+LABEL project=xebikart
+LABEL maintainer=xebikart-team-dashboard
 
-ADD config/nginx.conf.tpl /etc/nginx/nginx.conf.tpl
-ADD config/proxy.conf /etc/nginx/proxy.conf
-ADD build/ /usr/share/nginx/html/
+WORKDIR /sources
 
-ADD start.sh /start.sh
+COPY package.json .
+COPY yarn.lock    .
 
-RUN chmod +x /start.sh && chmod -R 755 /etc/nginx/ && chown -R nginx:nginx /etc/nginx/
+RUN yarn install
 
-EXPOSE 80
+# Reminder: copy-ing a directory copies the content, so we have to make the
+# target path explicit
+COPY config ./config
+COPY src    ./src
+COPY public ./public
 
-CMD [ "/start.sh" ]
+RUN yarn build
+
+FROM nginx:1.15.11-alpine
+
+COPY --from=0 /sources/build /usr/share/nginx/html
