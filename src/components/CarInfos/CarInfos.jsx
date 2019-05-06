@@ -6,10 +6,10 @@ import styles from './CarInfos.module.css';
 export default ({className}) => {
   return (
     <div className={classnames(styles.container, className)}>
-      <div className={styles.carinfos}>
+      <div className={styles.carInfos}>
         <div>
-          <div className={styles.carcolor}></div>
-          <div className={styles.carimage}>
+          <div className={styles.carColor}></div>
+          <div className={styles.carImage}>
             <img src="./car_top.png" alt="" />
           </div>
           <div className={styles.laps}>
@@ -19,12 +19,12 @@ export default ({className}) => {
             <span className={styles.grey}></span>
           </div>
         </div>
-        <div className={styles.lapsboard}>
+        <div className={styles.lapsBoard}>
           <div className={styles.title}>Chrono <span className={styles.rank}>1er</span></div>
-          <div className={styles.numlap}>1. <span className={styles.timelap}>00:00:00</span></div>
-          <div className={styles.numlap}>2. <span className={styles.timelap}>00:00:00</span></div>
-          <div className={styles.numlap}>3. <span className={styles.timelap}>00:00:00</span></div>
-          <div className={styles.numlap}>4. <span className={styles.timelap}>00:00:00</span></div>
+          <div className={styles.numLap}>1. <span className={styles.timeLap}>00:00:00</span></div>
+          <div className={styles.numLap}>2. <span className={styles.timeLap}>00:00:00</span></div>
+          <div className={styles.numLap}>3. <span className={styles.timeLap}>00:00:00</span></div>
+          <div className={styles.numLap}>4. <span className={styles.timeLap}>00:00:00</span></div>
         </div>
       </div>
     </div>

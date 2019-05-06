@@ -1,18 +1,18 @@
 .container {
   background-color: #FFF;
-  margin: 10px;
+  margin: 10px 0;
 }
 
-.carinfos {
+.carInfos {
   display: grid;
   grid-template-columns: 2fr 3fr;
 }
 
-.carcolor {
+.carColor {
   position: relative;
 }
 
-.carcolor::after {
+.carColor::after {
   content: "";
   position: absolute;
   top: 0;
@@ -24,9 +24,8 @@
   border-color: #007bff transparent transparent transparent;
 }
 
-.carimage img {
+.carImage img {
   width: 100%;
-  height: auto;
 }
 
 .laps {
@@ -60,7 +59,7 @@
   background-color: rgba(150, 150, 150, 0.5);
 }
 
-.lapsboard {
+.lapsBoard {
   margin: 10px;
 }
 
@@ -75,10 +74,16 @@
   float: right;
 }
 
-.numlap {
+.numLap {
   line-height: 1.5em;
 }
 
-.timelap {
+.timeLap {
   float: right;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 10px;
+  }
 }
