@@ -1,0 +1,89 @@
+.container {
+  background-color: #FFF;
+  margin: 10px 0;
+}
+
+.carInfos {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.carColor {
+  position: relative;
+}
+
+.carColor::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 30px 0 0;
+  border-color: #007bff transparent transparent transparent;
+}
+
+.carImage img {
+  width: 100%;
+}
+
+.laps {
+  text-align: center;
+}
+
+.laps span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  border-radius: 50%;
+  border: 2px solid #FF0000;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.laps span.green {
+  border-color: #00FF00;
+  background-color: rgba(0, 255, 0, 0.5);
+}
+.laps span.orange {
+  border-color: #FF7B00;
+  background-color: rgba(255, 153, 0, 0.5);
+}
+.laps span.red {
+  border-color: #FF0000;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+.laps span.grey {
+  border-color: #969696;
+  background-color: rgba(150, 150, 150, 0.5);
+}
+
+.lapsBoard {
+  margin: 10px;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 1px solid #000;
+}
+
+.rank {
+  float: right;
+}
+
+.numLap {
+  line-height: 1.5em;
+}
+
+.timeLap {
+  float: right;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 10px;
+  }
+}
