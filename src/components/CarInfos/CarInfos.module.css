@@ -1,5 +1,5 @@
 .container {
-  background-color: #FFF;
+  background-color: #fff;
   margin: 10px 0;
 }
 
@@ -38,20 +38,20 @@
   height: 15px;
   margin: 5px;
   border-radius: 50%;
-  border: 2px solid #FF0000;
+  border: 2px solid #ff0000;
   background-color: rgba(255, 0, 0, 0.5);
 }
 
 .laps span.green {
-  border-color: #00FF00;
+  border-color: #00ff00;
   background-color: rgba(0, 255, 0, 0.5);
 }
 .laps span.orange {
-  border-color: #FF7B00;
+  border-color: #ff7b00;
   background-color: rgba(255, 153, 0, 0.5);
 }
 .laps span.red {
-  border-color: #FF0000;
+  border-color: #ff0000;
   background-color: rgba(255, 0, 0, 0.5);
 }
 .laps span.grey {
@@ -61,25 +61,6 @@
 
 .lapsBoard {
   margin: 10px;
-}
-
-.title {
-  margin-bottom: 10px;
-  font-weight: bold;
-  padding: 10px 0;
-  border-bottom: 1px solid #000;
-}
-
-.rank {
-  float: right;
-}
-
-.numLap {
-  line-height: 1.5em;
-}
-
-.timeLap {
-  float: right;
 }
 
 @media (min-width: 768px) {
