@@ -1,0 +1,31 @@
+.stirJauge {
+  display: flex;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+}
+
+.stirJauge .middleBar {
+  width: 100px;
+  height: 10px;
+  background-color: black;
+}
+.stirJauge .leftWheel {
+  height: 100%;
+  width: 10px;
+  background-color: black;
+  content: "";
+  position: absolute;
+  left: -5px;
+  transition: all 1s ease-in-out;
+}
+.stirJauge .rightWheel {
+  height: 100%;
+  width: 10px;
+  background-color: black;
+  content: "";
+  position: absolute;
+  right: -5px;
+  transition: all 1s ease-in-out;
+}

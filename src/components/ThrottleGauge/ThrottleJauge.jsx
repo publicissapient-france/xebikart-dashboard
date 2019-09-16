@@ -9,7 +9,7 @@ export default ({ min, max, value, className }) => {
       <span className={styles.speedometer}></span>
       <span
         className={styles.needle}
-        style={{ transform: `rotate(${value}deg)` }}
+        style={{ transform: `rotate(${value * 0.9}deg)` }}
       ></span>
     </div>
   );

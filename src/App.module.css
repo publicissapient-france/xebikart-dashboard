@@ -1,32 +1,7 @@
 .container {
-  display: grid;
-  background-color: #CFCFCF;
-  grid-template-rows: 70px calc(100% - 70px - 12px);
-  grid-gap: 12px;
-  padding: 12px;
-  width: calc(100% - 24px);
-  height: calc(100% - 24px);
-}
-
-.logo {
-  grid-row: 1;
-  margin: auto;
-  height: calc(100% - 20px);
-  background-color: white;
-  border-radius: 100px;
-  padding: 10px;
-}
-
-.dashboard {
-  grid-row: 2;
+  height: 100vh;
+  width: 100vw;
 }
 
 @media (min-width: 768px) {
-  .container {
-    grid-template-rows: 140px calc(100% - 140px - 24px); 
-    grid-gap: 24px;
-    padding: 24px;
-    width: calc(100% - 48px);
-    height: calc(100% - 48px);
-  }
 }
