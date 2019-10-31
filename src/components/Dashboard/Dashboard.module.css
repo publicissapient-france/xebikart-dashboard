@@ -14,6 +14,11 @@
     padding: 16px;
   }
 
+  .controlPanel {
+    display: flex;
+    justify-content: space-around;
+  }
+
   .cars {
     grid-column: 1;
     grid-row: 1 / span 2;
