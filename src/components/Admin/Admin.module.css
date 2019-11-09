@@ -2,6 +2,13 @@
   background-color: #FAFAFA;
   text-align: center;
   display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .admin {
+    flex-direction: row;
+  }
 }
 
 .console {
@@ -10,6 +17,7 @@
   font-family: 'Encode Sans Condensed', sans-serif;
   text-align: left;
   color: #F1F1F1;
+  padding: 10px;
 }
 
 .console_line {
@@ -18,6 +26,7 @@
 
 .actions {
   width: 100%;
+  padding: 20px 0 30px;
 }
 
 .title {
@@ -34,7 +43,8 @@
   cursor: pointer;
   border-radius: 2px;
   border: solid 1px #EB5757;
-  min-width: 300px;
+  max-width: 300px;
+  width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
