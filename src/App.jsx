@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useSSE } from "react-hooks-sse";
 
-import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard, { DASHBOARD_MODES } from "./components/Dashboard/Dashboard";
 
 import { Switch, Route, useHistory } from "react-router-dom";
 
@@ -27,6 +27,7 @@ export default () => {
           <Dashboard
             raceStatus={state ? state.data : {}}
             className={styles.dashboard}
+            mode={DASHBOARD_MODES.PAST}
           />
         </Route>
       </Switch>
