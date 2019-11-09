@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSSE } from "react-hooks-sse";
 
 import Dashboard from "./components/Dashboard/Dashboard";
+import Admin from './components/Admin/Admin';
 
 import { Switch, Route, useHistory } from "react-router-dom";
 
@@ -23,6 +24,9 @@ export default () => {
     <div className={styles.container}>
       <Switch>
         <Route path="/coucou">COUCOU</Route>
+        <Route path="/admin">
+          <Admin/>
+        </Route>
         <Route path="/">
           <Dashboard
             raceStatus={state ? state.data : {}}
