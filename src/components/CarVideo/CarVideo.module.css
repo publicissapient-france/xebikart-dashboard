@@ -1,0 +1,10 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.container__video {
+  height: 10%;
+  width: auto;
+}

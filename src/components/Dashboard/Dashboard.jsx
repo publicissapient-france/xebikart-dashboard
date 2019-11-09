@@ -10,7 +10,15 @@ import StirJauge from "../StirJauge/StirJauge";
 import ThrottleJauge from "../ThrottleGauge/ThrottleJauge";
 import CarVideo from "../CarVideo/CarVideo";
 
-export default ({ raceStatus, className }) => {
+import pastModeBackground from "./dashboard-xebikart-db1-bg.png";
+
+export const DASHBOARD_MODES = {
+  PAST: "past",
+  PRESENT: "present",
+  FUTURE: "future"
+};
+
+export default ({ raceStatus, mode, className }) => {
   const [value, setValue] = useState(0);
   const [stirValue, setStirValue] = useState(0);
   const [throttleValue, setThrottleValue] = useState(0);
@@ -31,15 +39,28 @@ export default ({ raceStatus, className }) => {
   }
 
   return (
-    <div className={classnames(styles.container, className)}>
-      <SSEProvider endpoint="http://state.xebik.art/car/video">
-        <CarVideo />
-      </SSEProvider>
-      <RaceTrack carPosition={raceStatus.position || {}} />
-      <StirJauge value={raceStatus.user && raceStatus.user.angle * 200} />
-      <ThrottleJauge
-        value={raceStatus.user && raceStatus.user.throttle * 200}
-      />
+    <div
+      className={classnames(
+        styles.container,
+        styles[`container--${mode}`],
+        className
+      )}
+    >
+      <div className={styles.container__video}>
+        <SSEProvider endpoint="http://state.xebik.art/car/video">
+          <CarVideo />
+        </SSEProvider>
+      </div>
+      <div className={styles.container__panel}>
+        <img
+          className={styles.container__panel__image}
+          src={pastModeBackground}
+        />
+        {/* <StirJauge value={raceStatus.user && raceStatus.user.angle * 200} />
+          <ThrottleJauge
+            value={raceStatus.user && raceStatus.user.throttle * 200}
+          /> */}
+      </div>
     </div>
   );
 
