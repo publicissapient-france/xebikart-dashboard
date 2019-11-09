@@ -1,44 +1,101 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import styles from './Admin.module.css';
 import {resetPoll, stopPoll, voteUniverse} from './Admin.service';
+import Result from './Result';
 
-export default ({}) => {
+export default () => {
 
-  const voteUniverse1Android = () =>
-    voteUniverse({universe: 1, platform: 'android'});
+  const [results, setResults] = useState(
+    []
+  );
 
-  const voteUniverse2Android = () =>
-    voteUniverse({universe: 2, platform: 'ios'});
+  const vote = async (universe) => {
+    try {
+      const result = await voteUniverse(universe);
+      setResults([{
+        timestamp: Date.now(),
+        success: result,
+        text: `Vote for universe ${universe.universe} and platform ${universe.platform}`
+      }, ...results])
+    } catch (e) {
+      setResults([{
+        timestamp: Date.now(),
+        success: false,
+        text: `Error when voting for universe`
+      }, ...results])
+    }
+  };
 
-  const voteUniverse1iOS = () =>
-    voteUniverse({universe: 1, platform: 'android'});
+  const stopUniversePoll = async () => {
+    try {
+      const result = await stopPoll();
+      setResults([{
+        timestamp: Date.now(),
+        success: result,
+        text: `Poll stopped`
+      }, ...results])
+    } catch (e) {
+      setResults([{
+        timestamp: Date.now(),
+        success: false,
+        text: `Error when stopping poll`
+      }, ...results])
+    }
+  };
 
-  const voteUniverse2iOS = () =>
-    voteUniverse({universe: 2, platform: 'ios'});
+  const resetUniversePoll = async () => {
+    try {
+      const result = await resetPoll();
+      setResults([{
+        timestamp: Date.now(),
+        success: result,
+        text: `Poll reset`
+      }, ...results])
+    } catch (e) {
+      setResults([{
+        timestamp: Date.now(),
+        success: false,
+        text: `Error when resetting poll`
+      }, ...results])
+    }
+  };
 
   return (
     <div className={styles.admin}>
-      <h1 className={styles.title}>Admin</h1>
-      <ul>
+      <ul className={styles.actions}>
         <li>
-          <button className={styles.button} onClick={voteUniverse1Android}>Vote Universe 1 (Android)</button>
+          <h1 className={styles.title}>Admin</h1>
         </li>
         <li>
-          <button className={styles.button} onClick={voteUniverse2Android}>Vote Universe 2 (Android)</button>
+          <button className={styles.button} onClick={() => vote({universe: 1, platform: 'android'})}>
+            Vote universe 1 (Android)
+          </button>
         </li>
         <li>
-          <button className={styles.button} onClick={voteUniverse1iOS}>Vote Universe 1 (iOS)</button>
+          <button className={styles.button} onClick={() => vote({universe: 2, platform: 'android'})}>
+            Vote universe 2 (Android)
+          </button>
         </li>
         <li>
-          <button className={styles.button} onClick={voteUniverse2iOS}>Vote Universe 2 (iOS)</button>
+          <button className={styles.button} onClick={() => vote({universe: 1, platform: 'ios'})}>
+            Vote universe 1 (iOS)
+          </button>
         </li>
         <li>
-          <button className={styles.button} onClick={stopPoll}>⚠️ Stop poll</button>
+          <button className={styles.button} onClick={() => vote({universe: 2, platform: 'ios'})}>
+            Vote Universe 2 (iOS)
+          </button>
         </li>
         <li>
-          <button className={styles.button} onClick={resetPoll}>⚠️ Reset poll</button>
+          <button className={styles.button} onClick={stopUniversePoll}>⚠️ Stop poll</button>
         </li>
+        <li>
+          <button className={styles.button} onClick={resetUniversePoll}>⚠️ Reset poll</button>
+        </li>
+      </ul>
+      <ul className={styles.console}>
+        {results.map(result => <Result key={result.timestamp} result={result}/>)}
       </ul>
     </div>
   );

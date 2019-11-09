@@ -1,7 +1,23 @@
 .admin {
   background-color: #FAFAFA;
-  padding: 20px 0;
   text-align: center;
+  display: flex;
+}
+
+.console {
+  background-color: #2B2B2B;
+  width: 100%;
+  font-family: 'Encode Sans Condensed', sans-serif;
+  text-align: left;
+  color: #F1F1F1;
+}
+
+.console_line {
+  margin: 5px;
+}
+
+.actions {
+  width: 100%;
 }
 
 .title {
