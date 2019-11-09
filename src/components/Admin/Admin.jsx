@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 
 import styles from './Admin.module.css';
 import {resetPoll, stopPoll, voteUniverse} from './Admin.service';
-import Result from './Result';
+import ResultConsole from './ResultConsole';
+import SseConsole from './SseConsole';
 
 export default () => {
 
@@ -94,9 +95,8 @@ export default () => {
           <button className={styles.button} onClick={resetUniversePoll}>⚠️ Reset poll</button>
         </li>
       </ul>
-      <ul className={styles.console}>
-        {results.map(result => <Result key={result.timestamp} result={result}/>)}
-      </ul>
+      <ResultConsole results={results}/>
+      <SseConsole/>
     </div>
   );
 }
