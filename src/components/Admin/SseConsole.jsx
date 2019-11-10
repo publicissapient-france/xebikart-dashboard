@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Admin.module.css';
 import {getEventSourceUniverse} from './Admin.service';
+import {toPrettyTime} from './Util';
 
 export default () => {
   const [events, setEvents] = useState(
@@ -21,7 +22,7 @@ export default () => {
 
   return (
     <ul className={styles.sse}>
-      {events.map(e => <li className={styles.console_line} key={e.timestamp}>✉️ <span
+      {events.map(e => <li className={styles.console_line} key={e.timestamp}>✉️ {toPrettyTime(e.timestamp)} <span
         className={styles[e.type]}>{e.type}</span> {e.text}</li>)}
     </ul>
   )
