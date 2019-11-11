@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
-import classnames from "classnames";
 
+import classnames from "classnames";
+import { Switch, Route } from "react-router-dom";
 import { SSEProvider } from "react-hooks-sse";
 
 import styles from "./Dashboard.module.css";
-import RaceTrack from "../RaceTrack/RaceTrack";
-
-import StirJauge from "../StirJauge/StirJauge";
-import ThrottleJauge from "../ThrottleGauge/ThrottleJauge";
 import CarVideo from "../CarVideo/CarVideo";
+import PastPanel from "../PastPanel/PastPanel";
+import PresentPanel from "../PresentPanel/PresentPanel";
+import FuturePanel from "../FuturePanel/FuturePanel";
 
-export default ({ raceStatus, className }) => {
+export const DASHBOARD_MODES = {
+  PAST: "past",
+  PRESENT: "present",
+  FUTURE: "future"
+};
+
+export default ({ raceStatus, mode, className }) => {
   const [value, setValue] = useState(0);
   const [stirValue, setStirValue] = useState(0);
   const [throttleValue, setThrottleValue] = useState(0);
@@ -20,8 +26,8 @@ export default ({ raceStatus, className }) => {
         x: Math.random() * 100,
         y: Math.random() * 100
       });
-      setStirValue(Math.random() * 200 - 100);
-      setThrottleValue(Math.random() * 200 - 100);
+      setStirValue(Math.random() * (Math.random() > 0.5 ? 1 : -1));
+      setThrottleValue(Math.random());
     }, 1000);
     return () => clearInterval(interval);
   });
@@ -31,15 +37,38 @@ export default ({ raceStatus, className }) => {
   }
 
   return (
-    <div className={classnames(styles.container, className)}>
-      <SSEProvider endpoint="http://state.xebik.art/car/video">
-        <CarVideo />
-      </SSEProvider>
-      <RaceTrack carPosition={raceStatus.position || {}} />
-      <StirJauge value={raceStatus.user && raceStatus.user.angle * 200} />
-      <ThrottleJauge
-        value={raceStatus.user && raceStatus.user.throttle * 200}
-      />
+    <div
+      className={classnames(
+        styles.container,
+        styles[`container--${mode}`],
+        className
+      )}
+    >
+      <div className={styles.container__video}>
+        <SSEProvider endpoint="http://state.xebik.art/car/video">
+          <CarVideo />
+        </SSEProvider>
+      </div>
+      <Switch>
+        <Route path="/past">
+          <PastPanel
+            raceStatus={{ user: { throttle: throttleValue, angle: stirValue } }}
+            className={styles.container__panel}
+          />
+        </Route>
+        <Route path="/present">
+          <PresentPanel
+            raceStatus={{ user: { throttle: throttleValue, angle: stirValue } }}
+            className={styles.container__panel}
+          />
+        </Route>
+        <Route path="/future">
+          <FuturePanel
+            raceStatus={{ user: { throttle: throttleValue, angle: stirValue } }}
+            className={styles.container__panel}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 
