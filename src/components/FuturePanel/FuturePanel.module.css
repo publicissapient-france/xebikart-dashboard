@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Digital Display";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("Digital Display Normal"),
+    url(../../fonts/digitalDisplay.ttf) format("truetype");
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.container__background {
+  width: 100%;
+  display: block;
+}
+
+.container__cover {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.container__speedCounter--mph {
+  font-family: "Digital Display";
+  font-size: 100px;
+  position: absolute;
+  top: 4%;
+  left: 3.5%;
+  color: #00f3c2;
+  text-align: right;
+  width: 12%;
+}
+
+.container__speedCounter--km {
+  font-family: "Digital Display Normal";
+  font-size: 20px;
+  position: absolute;
+  top: 25%;
+  left: 17.5%;
+  color: #f50041;
+  text-align: right;
+  width: 4%;
+}
+
+.container__speedIndicator {
+  position: absolute;
+  top: 49%;
+  left: 3.3%;
+  height: 39%;
+  width: 18%;
+}
+
+.container__speedIndicator__emptyBar {
+  background-color: #004b3e;
+  height: 100%;
+  width: 8.3%;
+  display: inline-block;
+  transition: all 0.5s ease-in-out;
+}
+
+.container__speedIndicator__emptyBar + .container__speedIndicator__emptyBar {
+  margin-left: 1.87%;
+}
+
+.container__rearIndicator--left {
+  position: absolute;
+  width: 12.2%;
+  left: 26.5%;
+  top: 20.5%;
+  transition: all 0.5s ease-in-out;
+}
+
+.container__rearIndicator--right {
+  position: absolute;
+  width: 12.2%;
+  left: 40%;
+  top: 20.5%;
+  transition: all 0.5s ease-in-out;
+}
+
+.container__rearZone {
+  position: absolute;
+  left: 26.43%;
+  top: 14%;
+  width: 25.9%;
+}

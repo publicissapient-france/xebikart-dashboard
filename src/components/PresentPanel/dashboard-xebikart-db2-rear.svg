@@ -24,7 +24,5 @@
 			<circle id="center" fill="none" cx="255" cy="255" r="4"/>
 		</g>
 	</g>
-	
-		<circle id="center-rear_2_" fill="none" stroke="#FF0000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" cx="255" cy="255" r="255"/>
 </g>
 </svg>

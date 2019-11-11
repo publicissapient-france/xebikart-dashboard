@@ -12,7 +12,6 @@ import styles from "./App.module.css";
 export default () => {
   const history = useHistory();
   const state = useSSE("incomingData");
-  let raceStatus = { race: { state: "STARTED" } };
 
   useEffect(() => {
     if (state && state.data.screen) {

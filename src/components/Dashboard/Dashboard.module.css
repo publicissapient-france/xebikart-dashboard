@@ -18,8 +18,4 @@
   .container__panel {
     grid-row: 2;
   }
-
-  .container__panel__image {
-    width: 100%;
-  }
 }

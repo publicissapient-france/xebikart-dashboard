@@ -38,8 +38,6 @@
 			<circle fill="#FE414D" cx="169.4" cy="169.7" r="10"/>
 		</g>
 	</g>
-	
-		<circle fill="none" stroke="#FF0000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" cx="169.4" cy="169.7" r="169.5"/>
 	<g>
 		<circle id="center" fill="none" cx="169.4" cy="169.7" r="5"/>
 	</g>

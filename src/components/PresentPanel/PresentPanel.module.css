@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.container__background {
+  width: 100%;
+  display: block;
+}
+
+.container__speedIndicator {
+  position: absolute;
+  left: 0.8%;
+  top: 4.5%;
+  width: 20%;
+  transition: all 1s ease-in-out;
+}
+
+.container__rearIndicator--left {
+  position: absolute;
+  width: 19%;
+  left: 23.8%;
+  top: -0.5%;
+  transition: all 1s ease-in-out;
+}
+
+.container__rearIndicator--right {
+  position: absolute;
+  width: 19%;
+  left: 31.5%;
+  top: -0.5%;
+  transition: all 1s ease-in-out;
+}
+
+.container__positionIndicator {
+  position: absolute;
+  width: 18.4%;
+  left: 53.1%;
+  top: 10.9%;
+}
