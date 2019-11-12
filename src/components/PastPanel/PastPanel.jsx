@@ -1,6 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
+import { useSSE } from "react-hooks-sse";
+
 import styles from "./PastPanel.module.css";
 
 import background from "./dashboard-xebikart-db1-bg.png";
@@ -13,6 +15,11 @@ import cover from "./dashboard-xebikart-db1-top.png";
 
 export default ({ raceStatus, className }) => {
   const time = new Date();
+
+  const raceData = useSSE("incomingData");
+  if (raceData && raceData.data) {
+    raceStatus = raceData.data;
+  }
 
   return (
     <div className={classnames(styles.container, className)}>

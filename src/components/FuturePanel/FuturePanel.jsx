@@ -1,6 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
+import { useSSE } from "react-hooks-sse";
+
 import styles from "./FuturePanel.module.css";
 
 import background from "./dashboard-xebikart-db3-bg.png";
@@ -13,6 +15,11 @@ const getRearZone = angle => {
 };
 
 export default ({ raceStatus, className }) => {
+  const raceData = useSSE("incomingData");
+  if (raceData && raceData.data) {
+    raceStatus = raceData.data;
+  }
+
   return (
     <div className={classnames(styles.container, className)}>
       <img className={styles.container__background} src={background} />

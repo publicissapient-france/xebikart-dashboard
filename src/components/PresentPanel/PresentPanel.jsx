@@ -1,6 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
+import { useSSE } from "react-hooks-sse";
+
 import styles from "./PresentPanel.module.css";
 
 import background from "./dashboard-xebikart-db2-bg.png";
@@ -9,6 +11,11 @@ import rearIndicator from "./dashboard-xebikart-db2-rear.svg";
 import positionIndicator from "./dashboard-xebikart-db2-position.svg";
 
 export default ({ raceStatus, className }) => {
+  const raceData = useSSE("incomingData");
+  if (raceData && raceData.data) {
+    raceStatus = raceData.data;
+  }
+
   return (
     <div className={classnames(styles.container, className)}>
       <img className={styles.container__background} src={background} />

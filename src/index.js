@@ -5,16 +5,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import { SSEProvider } from "react-hooks-sse";
-
 import "./index.css";
 
 ReactDOM.render(
-  <SSEProvider endpoint="http://state.xebik.art/events">
-    <Router>
-      <App />
-    </Router>
-  </SSEProvider>,
+  <Router>
+    <App />
+  </Router>,
   document.getElementById("root")
 );
 
