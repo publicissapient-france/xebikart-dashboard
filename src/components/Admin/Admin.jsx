@@ -141,6 +141,12 @@ export default () => {
           <button className={styles.button} onClick={() => setArMode({mode: 'city'})}>AR City</button>
         </li>
         <li>
+          <button className={styles.button} onClick={() => setArMode({mode: 'cityOverboard'})}>AR City Overboard</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setArMode({mode: 'cityNike'})}>AR City Nike</button>
+        </li>
+        <li>
           <button className={styles.button} onClick={() => setArMode({mode: 'unicorn'})}>AR Unicorn</button>
         </li>
         <li>
