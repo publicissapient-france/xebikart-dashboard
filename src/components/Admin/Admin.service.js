@@ -9,5 +9,8 @@ export const stopPoll = async () =>
 export const resetPoll = async () =>
   await axios.post(`${process.env.REACT_APP_BACKEND_HOST}/api/poll/reset`);
 
+export const setMode = async (mode) =>
+  await axios.post(`${process.env.REACT_APP_BACKEND_HOST}/api/mode`, mode);
+
 export const getEventSourceUniverse = () =>
   new EventSource(`${process.env.REACT_APP_BACKEND_HOST}/universes`);
