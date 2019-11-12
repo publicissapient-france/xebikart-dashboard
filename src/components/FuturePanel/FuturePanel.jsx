@@ -7,18 +7,6 @@ import background from "./dashboard-xebikart-db3-bg.png";
 import rearIndicator from "./dashboard-xebikart-db3-rear.svg";
 import cover from "./dashboard-xebikart-db3-top.png";
 
-// import rearZone1 from "./rear-zone-1.png";
-// import rearZone2 from "./rear-zone-1.png";
-// import rearZone3 from "./rear-zone-1.png";
-// import rearZone4 from "./rear-zone-1.png";
-// import rearZone5 from "./rear-zone-1.png";
-// import rearZone6 from "./rear-zone-1.png";
-// import rearZone7 from "./rear-zone-1.png";
-// import rearZone8 from "./rear-zone-1.png";
-// import rearZone9 from "./rear-zone-1.png";
-// import rearZone9 from "./rear-zone-1.png";
-// import rearZone9 from "./rear-zone-1.png";
-
 const getRearZone = angle => {
   const zoneNumber = (Math.trunc((angle + 1) / (2 / 11)) + 1) % 12;
   return require(`./rear-zone-${zoneNumber}.png`);
@@ -29,18 +17,14 @@ export default ({ raceStatus, className }) => {
     <div className={classnames(styles.container, className)}>
       <img className={styles.container__background} src={background} />
       <div className={styles["container__speedCounter--mph"]}>
-        {(
-          raceStatus.user &&
-          raceStatus.user.throttle &&
-          raceStatus.user.throttle * 200
-        ).toFixed(0)}
+        {raceStatus.user && raceStatus.user.throttle
+          ? (raceStatus.user.throttle * 200).toFixed(0)
+          : 0}
       </div>
       <div className={styles["container__speedCounter--km"]}>
-        {(
-          raceStatus.user &&
-          raceStatus.user.throttle &&
-          raceStatus.user.throttle * 200 * 1.8
-        ).toFixed(0)}
+        {raceStatus.user && raceStatus.user.throttle
+          ? (raceStatus.user.throttle * 200 * 1.61).toFixed(0)
+          : 0}
       </div>
       <div className={styles.container__speedIndicator}>
         {Array(10)
