@@ -138,13 +138,13 @@ export default () => {
           <button className={styles.button} onClick={() => setDashboardMode({mode: 'future'})}>Mode Future</button>
         </li>
         <li>
-          <button className={styles.button} onClick={() => setArMode({mode: 'ar-city'})}>AR City</button>
+          <button className={styles.button} onClick={() => setArMode({mode: 'city'})}>AR City</button>
         </li>
         <li>
-          <button className={styles.button} onClick={() => setArMode({mode: 'ar-unicorn'})}>AR Unicorn</button>
+          <button className={styles.button} onClick={() => setArMode({mode: 'unicorn'})}>AR Unicorn</button>
         </li>
         <li>
-          <button className={styles.button} onClick={() => setArMode({mode: 'ar-minecraft'})}>AR Minecraft</button>
+          <button className={styles.button} onClick={() => setArMode({mode: 'minecraft'})}>AR Minecraft</button>
         </li>
       </ul>
       <ResultConsole results={results}/>
