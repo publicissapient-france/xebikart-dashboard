@@ -15,6 +15,8 @@ COPY config ./config
 COPY src    ./src
 COPY public ./public
 
+ENV REACT_APP_BACKEND_HOST=http://state.xebik.art
+
 RUN yarn build
 
 FROM nginx:1.15.11-alpine
