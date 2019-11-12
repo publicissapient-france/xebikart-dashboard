@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import styles from './Admin.module.css';
-import {resetPoll, stopPoll, voteUniverse} from './Admin.service';
+import {resetPoll, setMode, stopPoll, voteUniverse} from './Admin.service';
 import ResultConsole from './ResultConsole';
 import SseConsole from './SseConsole';
 
@@ -62,6 +62,40 @@ export default () => {
     }
   };
 
+  const setDashboardMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([{
+        timestamp: Date.now(),
+        success: result,
+        text: `Set Dashboard mode ${mode.mode}`
+      }, ...results]);
+    } catch (e) {
+      setResults([{
+        timestamp: Date.now(),
+        success: false,
+        text: `Error when setting Dashboard mode`
+      }, ...results]);
+    }
+  };
+
+  const setArMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([{
+        timestamp: Date.now(),
+        success: result,
+        text: `Set AR mode ${mode.mode}`
+      }, ...results]);
+    } catch (e) {
+      setResults([{
+        timestamp: Date.now(),
+        success: false,
+        text: `Error when setting Dashboard mode`
+      }, ...results]);
+    }
+  };
+
   return (
     <div className={styles.admin}>
       <ul className={styles.actions}>
@@ -93,6 +127,24 @@ export default () => {
         </li>
         <li>
           <button className={styles.button} onClick={resetUniversePoll}>⚠️ Reset poll</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setDashboardMode({mode: 'past'})}>Mode Past</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setDashboardMode({mode: 'present'})}>Mode Present</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setDashboardMode({mode: 'future'})}>Mode Future</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setArMode({mode: 'ar-city'})}>AR City</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setArMode({mode: 'ar-unicorn'})}>AR Unicorn</button>
+        </li>
+        <li>
+          <button className={styles.button} onClick={() => setArMode({mode: 'ar-minecraft'})}>AR Minecraft</button>
         </li>
       </ul>
       <ResultConsole results={results}/>
