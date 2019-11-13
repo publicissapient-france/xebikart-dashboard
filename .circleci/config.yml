@@ -82,7 +82,7 @@ jobs:
           command: kubectl cluster-info
       - run:
           name: "Deploy to GKE"
-          command: kubectl apply -f k8s-manifests
+          command: kubectl apply -f k8s-manifests -n apps-production
 
 
 workflows:
