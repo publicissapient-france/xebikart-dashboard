@@ -24,4 +24,3 @@ FROM nginx:1.15.11-alpine
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/dashboard-spa.conf
 COPY --from=0 /sources/build /usr/share/nginx/html
-COPY --from=0 nginx.conf /etc/nginx/conf.d/default.conf
