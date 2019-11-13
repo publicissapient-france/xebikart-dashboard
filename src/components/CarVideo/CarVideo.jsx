@@ -6,5 +6,5 @@ import styles from "./CarVideo.module.css";
 
 export default ({ className }) => {
   const state = useSSE("incomingData");
-  return <div className={classnames(styles.container, className)}></div>;
+  return <div className={classnames(styles.container, className)}>{state}</div>;
 };

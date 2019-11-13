@@ -28,7 +28,7 @@ export default ({ raceStatus, mode, className }) => {
     ) {
       history.push(state.data.mode);
     }
-  }, [state]);
+  }, [history, state]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,7 +62,11 @@ export default ({ raceStatus, mode, className }) => {
           <Route path="/past">
             <PastPanel
               raceStatus={{
-                user: { throttle: throttleValue, angle: stirValue }
+                user: {
+                  throttle: throttleValue,
+                  angle: stirValue,
+                  position: value
+                }
               }}
               className={styles.container__panel}
             />
@@ -70,7 +74,11 @@ export default ({ raceStatus, mode, className }) => {
           <Route path="/present">
             <PresentPanel
               raceStatus={{
-                user: { throttle: throttleValue, angle: stirValue }
+                user: {
+                  throttle: throttleValue,
+                  angle: stirValue,
+                  position: value
+                }
               }}
               className={styles.container__panel}
             />
@@ -78,7 +86,11 @@ export default ({ raceStatus, mode, className }) => {
           <Route path="/future">
             <FuturePanel
               raceStatus={{
-                user: { throttle: throttleValue, angle: stirValue }
+                user: {
+                  throttle: throttleValue,
+                  angle: stirValue,
+                  position: value
+                }
               }}
               className={styles.container__panel}
             />

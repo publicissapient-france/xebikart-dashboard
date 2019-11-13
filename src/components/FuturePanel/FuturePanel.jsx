@@ -24,7 +24,11 @@ export default ({ raceStatus, className }) => {
 
   return (
     <div className={classnames(styles.container, className)}>
-      <img className={styles.container__background} src={background} />
+      <img
+        alt="background"
+        className={styles.container__background}
+        src={background}
+      />
       <div className={styles["container__speedCounter--mph"]}>
         {raceStatus.user && raceStatus.user.throttle
           ? (raceStatus.user.throttle * 200).toFixed(0)
@@ -54,11 +58,13 @@ export default ({ raceStatus, className }) => {
       </div>
       {raceStatus.user && raceStatus.user.angle !== undefined ? (
         <img
+          alt="rear-zone"
           src={getRearZone(raceStatus.user.angle)}
           className={styles.container__rearZone}
         />
       ) : null}
       <img
+        alt="rear-left"
         src={rearIndicator}
         className={styles["container__rearIndicator--left"]}
         style={{
@@ -70,6 +76,7 @@ export default ({ raceStatus, className }) => {
         }}
       />
       <img
+        alt="rear-right"
         src={rearIndicator}
         className={styles["container__rearIndicator--right"]}
         style={{
@@ -86,7 +93,7 @@ export default ({ raceStatus, className }) => {
       <div className={styles.container__hours}>{time.getHours()}</div>
       <div className={styles.container__colon}>:</div>
       <div className={styles.container__minutes}>{time.getMinutes()}</div>
-      <img src={cover} className={styles.container__cover} />
+      <img alt="cover" src={cover} className={styles.container__cover} />
     </div>
   );
 };

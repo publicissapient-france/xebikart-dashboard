@@ -18,8 +18,13 @@ export default ({ raceStatus, className }) => {
 
   return (
     <div className={classnames(styles.container, className)}>
-      <img className={styles.container__background} src={background} />
       <img
+        alt="background"
+        className={styles.container__background}
+        src={background}
+      />
+      <img
+        alt="speed"
         src={speedIndicator}
         className={styles.container__speedIndicator}
         style={{
@@ -31,6 +36,7 @@ export default ({ raceStatus, className }) => {
         }}
       />
       <img
+        alt="rear-left"
         src={rearIndicator}
         className={styles["container__rearIndicator--left"]}
         style={{
@@ -42,6 +48,7 @@ export default ({ raceStatus, className }) => {
         }}
       />
       <img
+        alt="rear-right"
         src={rearIndicator}
         className={styles["container__rearIndicator--right"]}
         style={{
@@ -53,6 +60,7 @@ export default ({ raceStatus, className }) => {
         }}
       />
       <img
+        alt="position"
         src={positionIndicator}
         className={styles.container__positionIndicator}
       />
