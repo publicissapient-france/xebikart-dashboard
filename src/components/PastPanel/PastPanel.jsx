@@ -54,7 +54,7 @@ export default ({ raceStatus, className }) => {
         src={hourIndicator}
         className={styles.container__hourIndicator}
         style={{
-          transform: `rotate(${(((time.getHours() - 8) % 12) * 5 +
+          transform: `rotate(${((time.getHours() % 12) * 5 +
             time.getMinutes() / 12) *
             6}deg)`
         }}
@@ -63,7 +63,7 @@ export default ({ raceStatus, className }) => {
         src={minuteIndicator}
         className={styles.container__minuteIndicator}
         style={{
-          transform: `rotate(${(time.getMinutes() - 40) * 6}deg)`
+          transform: `rotate(${time.getMinutes() * 6}deg)`
         }}
       />
       <img src={cover} className={styles.container__cover} />

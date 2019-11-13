@@ -1,10 +1,8 @@
 @font-face {
-  font-family: "Digital Display";
+  font-family: "Digital-Display";
+  src: url("../../fonts/digitalDisplay.woff2") format("woff2");
+  font-weight: normal;
   font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local("Digital Display Normal"),
-    url(../../fonts/digitalDisplay.ttf) format("truetype");
 }
 
 .container {
@@ -25,25 +23,27 @@
 }
 
 .container__speedCounter--mph {
-  font-family: "Digital Display";
-  font-size: 100px;
+  font-family: "Digital-Display";
+  font-size: 6vw;
+  letter-spacing: 0.6vw;
   position: absolute;
   top: 4%;
   left: 3.5%;
   color: #00f3c2;
   text-align: right;
-  width: 12%;
+  width: 12.8%;
 }
 
 .container__speedCounter--km {
-  font-family: "Digital Display Normal";
-  font-size: 20px;
+  font-family: "Digital-Display";
+  font-size: 1.5vw;
   position: absolute;
-  top: 25%;
+  top: 23.9%;
   left: 17.5%;
   color: #f50041;
   text-align: right;
-  width: 4%;
+  width: 4.2%;
+  letter-spacing: 0.2vw;
 }
 
 .container__speedIndicator {
@@ -59,7 +59,7 @@
   height: 100%;
   width: 8.3%;
   display: inline-block;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .container__speedIndicator__emptyBar + .container__speedIndicator__emptyBar {
@@ -80,6 +80,78 @@
   left: 40%;
   top: 20.5%;
   transition: all 0.5s ease-in-out;
+}
+
+.container__month {
+  font-family: "Digital-Display";
+  font-size: 5.9vw;
+  letter-spacing: 0.01vw;
+  position: absolute;
+  top: 4%;
+  left: 80.1%;
+  color: #00f3c2;
+  text-align: right;
+  width: 10.4%;
+}
+
+.container__day {
+  font-family: "Digital-Display";
+  font-size: 5.9vw;
+  letter-spacing: 0.01vw;
+  position: absolute;
+  top: 4%;
+  left: 88%;
+  color: #00f3c2;
+  text-align: right;
+  width: 10.4%;
+}
+
+.container__year {
+  font-family: "Digital-Display";
+  font-size: 5.9vw;
+  letter-spacing: 0.01vw;
+  position: absolute;
+  top: 34%;
+  left: 87.8%;
+  color: #00f3c2;
+  text-align: right;
+  width: 10.4%;
+}
+
+.container__hours {
+  font-family: "Digital-Display";
+  font-size: 6vw;
+  letter-spacing: 0.04vw;
+  position: absolute;
+  top: 64.3%;
+  left: 84.5%;
+  color: #00f3c2;
+  text-align: right;
+  width: 6%;
+}
+
+.container__colon {
+  font-family: "Digital-Display";
+  font-size: 6vw;
+  letter-spacing: 0.6vw;
+  position: absolute;
+  top: 64.6%;
+  left: 80.96%;
+  color: #00f3c2;
+  text-align: right;
+  width: 12.8%;
+}
+
+.container__minutes {
+  font-family: "Digital-Display";
+  font-size: 6vw;
+  letter-spacing: 0.04vw;
+  position: absolute;
+  top: 64.3%;
+  left: 92.4%;
+  color: #00f3c2;
+  text-align: right;
+  width: 6%;
 }
 
 .container__rearZone {

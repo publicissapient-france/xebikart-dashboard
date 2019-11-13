@@ -15,6 +15,8 @@ const getRearZone = angle => {
 };
 
 export default ({ raceStatus, className }) => {
+  const time = new Date();
+
   const raceData = useSSE("incomingData");
   if (raceData && raceData.data) {
     raceStatus = raceData.data;
@@ -78,6 +80,12 @@ export default ({ raceStatus, className }) => {
           }deg)`
         }}
       />
+      <div className={styles.container__month}>NOV</div>
+      <div className={styles.container__day}>28</div>
+      <div className={styles.container__year}>2049</div>
+      <div className={styles.container__hours}>{time.getHours()}</div>
+      <div className={styles.container__colon}>:</div>
+      <div className={styles.container__minutes}>{time.getMinutes()}</div>
       <img src={cover} className={styles.container__cover} />
     </div>
   );

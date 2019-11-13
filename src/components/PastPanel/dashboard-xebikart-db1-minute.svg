@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.2" baseProfile="tiny" id="Calque_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px"
-	 viewBox="0 0 510 510" xml:space="preserve">
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="340px" height="340px"
+	 viewBox="0 0 340 340" xml:space="preserve">
 <g>
 	<g>
-		<path d="M350.6,217.7c0.5-0.3,0.9-0.7,1-1.2c0.2-0.5,0.1-1.1-0.2-1.6l-13.5-23.4c-0.3-0.5-0.7-0.8-1.2-0.9c0,0,0,0,0,0
-			c-0.5-0.1-1.1,0-1.6,0.3L161,302l5.7,9.9L350.6,217.7z"/>
-		<path fill="#FF0000" d="M94.6,346.7c0.5,0.9,1.7,1.3,2.7,0.8l69.4-35.6L161,302l-65.7,42C94.4,344.5,94.1,345.7,94.6,346.7z"/>
+		<g>
+			<path fill="#DA0200" d="M171.8,38.1c0-0.5-1.2-1.5-1.8-1.5c-0.7,0-1.8,1.1-1.8,1.5l-2.3,34.6l8.2,0L171.8,38.1z"/>
+		</g>
+		<path d="M179.5,160.6l-5.4-87.8l-8.2,0l-5.4,87.8c-0.2,3.2-0.2,6.4,0,23.6l18.9,0C179.7,167,179.7,163.8,179.5,160.6z"/>
+		<circle fill="#FFFFFF" cx="170" cy="170" r="5"/>
 	</g>
-	<circle id="center-speed" fill="none" cx="255" cy="255" r="255"/>
-	<circle id="_x3C_ellipse_x3E_" fill="#FFFFFF" cx="255" cy="255" r="5"/>
+	<circle fill="none" cx="170" cy="170" r="4.3"/>
+	<circle id="center-hour-small_1_" fill="none" cx="170" cy="170" r="170"/>
 </g>
 </svg>

@@ -40,16 +40,16 @@
 
 .container__minuteIndicator {
   position: absolute;
-  left: 79.91%;
-  top: 5.48%;
-  width: 13%;
+  left: 80.35%;
+  top: 7.4%;
+  width: 12%;
 }
 
 .container__hourIndicator {
   position: absolute;
-  left: 81.4%;
-  top: 13.3%;
-  width: 10%;
+  left: 79.85%;
+  top: 5.3%;
+  width: 13%;
 }
 
 .container__monthDay {
