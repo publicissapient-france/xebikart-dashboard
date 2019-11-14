@@ -75,7 +75,7 @@
   margin: 10px;
   cursor: pointer;
   border-radius: 2px;
-  border: solid 1px #EB5757;
+  border: solid 2px #FFFFFF;
   max-width: 300px;
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
@@ -97,3 +97,26 @@
 .ModeSet {
   color: #00f3c2;
 }
+
+.poll .button {
+  background-color: #EB9A57;
+}
+
+.controlPoll .button {
+  background-color: #EB9A57;
+  opacity: .8;
+}
+
+.dashboard .button {
+  background-color: #BD4689;
+}
+
+.ar .button {
+  background-color: #47BC46;
+}
+
+.car .button {
+  background-color: #991d1c;
+}
+
+

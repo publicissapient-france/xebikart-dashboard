@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-import styles from "./Admin.module.css";
-import { resetPoll, setMode, stopPoll, voteUniverse } from "./Admin.service";
-import ResultConsole from "./ResultConsole";
-import SseConsole from "./SseConsole";
+import styles from './Admin.module.css';
+import {resetPoll, setMode, stopPoll, voteUniverse} from './Admin.service';
+import ResultConsole from './ResultConsole';
+import SseConsole from './SseConsole';
 
 export default () => {
   const [results, setResults] = useState([]);
@@ -123,127 +123,204 @@ export default () => {
     }
   };
 
+  const setCarMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: result,
+          text: `Set Car mode ${mode.mode}`
+        },
+        ...results,
+      ]);
+    } catch (e) {
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: false,
+          text: `Error when setting Car mode`
+        },
+        ...results,
+      ]);
+    }
+  };
+
   return (
     <div className={styles.admin}>
       <ul className={styles.actions}>
         <li>
           <h1 className={styles.title}>Admin</h1>
         </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => vote({ universe: 1, platform: "android" })}
-          >
-            Vote universe 1 (Android)
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => vote({ universe: 2, platform: "android" })}
-          >
-            Vote universe 2 (Android)
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => vote({ universe: 1, platform: "ios" })}
-          >
-            Vote universe 1 (iOS)
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => vote({ universe: 2, platform: "ios" })}
-          >
-            Vote Universe 2 (iOS)
-          </button>
-        </li>
-        <li>
-          <button className={styles.button} onClick={stopUniversePoll}>
+        <ul className={styles.poll}>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => vote({universe: 1, platform: 'android'})}
+            >
+              Vote universe 1 (Android)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => vote({universe: 2, platform: 'android'})}
+            >
+              Vote universe 2 (Android)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => vote({universe: 1, platform: 'ios'})}
+            >
+              Vote universe 1 (iOS)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => vote({universe: 2, platform: 'ios'})}
+            >
+              Vote Universe 2 (iOS)
+            </button>
+          </li>
+        </ul>
+        <ul className={styles.controlPoll}>
+          <li>
+            <button className={styles.button} onClick={stopUniversePoll}>
             <span role="img" aria-label="stop">
               ⚠️
-            </span>{" "}
-            Stop poll
-          </button>
-        </li>
-        <li>
-          <button className={styles.button} onClick={resetUniversePoll}>
+            </span>{' '}
+              Stop poll
+            </button>
+          </li>
+          <li>
+            <button className={styles.button} onClick={resetUniversePoll}>
             <span role="img" aria-label="reset">
               ⚠️
-            </span>{" "}
-            Reset poll
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setDashboardMode({ mode: "past" })}
-          >
-            Mode Past
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setDashboardMode({ mode: "present" })}
-          >
-            Mode Present
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setDashboardMode({ mode: "future" })}
-          >
-            Mode Future
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setArMode({ mode: "city" })}
-          >
-            AR City
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setArMode({ mode: "cityOverboard" })}
-          >
-            AR City Overboard
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setArMode({ mode: "cityNike" })}
-          >
-            AR City Nike
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setArMode({ mode: "unicorn" })}
-          >
-            AR Unicorn
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.button}
-            onClick={() => setArMode({ mode: "minecraft" })}
-          >
-            AR Minecraft
-          </button>
-        </li>
+            </span>{' '}
+              Reset poll
+            </button>
+          </li>
+        </ul>
+        <ul className={styles.dashboard}>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setDashboardMode({mode: 'past'})}
+            >
+              Mode Past
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setDashboardMode({mode: 'present'})}
+            >
+              Mode Present
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setDashboardMode({mode: 'future'})}
+            >
+              Mode Future
+            </button>
+          </li>
+        </ul>
+        <ul className={styles.ar}>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'city'})}
+            >
+              AR City
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'cityOverboard'})}
+            >
+              AR City Overboard
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'cityNike'})}
+            >
+              AR City Nike
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'unicorn'})}
+            >
+              AR Unicorn
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'minecraft'})}
+            >
+              AR Minecraft
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'obstacle', data: {active: true}})}
+            >
+              AR Obstacle ON
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'obstacle', data: {active: false}})}
+            >
+              AR Obstacle OFF
+            </button>
+          </li>
+        </ul>
+        <ul className={styles.car}>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'ia'})}>
+              Car IA
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'stop'})}>
+              Car Stop
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'takeOver'})}>
+              Car Take Over
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'slow'})}>
+              Car Slow
+            </button>
+          </li>
+        </ul>
       </ul>
-      <ResultConsole results={results} />
-      <SseConsole />
+      <ResultConsole results={results}/>
+      <SseConsole/>
     </div>
   );
 };
