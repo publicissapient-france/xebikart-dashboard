@@ -14,3 +14,6 @@ export const setMode = async (mode) =>
 
 export const getEventSourceUniverse = () =>
   new EventSource(`${process.env.REACT_APP_BACKEND_HOST}/universes`);
+
+export const getEventSourceMode = () =>
+  new EventSource(`${process.env.REACT_APP_BACKEND_HOST}/modes`);
