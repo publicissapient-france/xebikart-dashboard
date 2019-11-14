@@ -4,6 +4,7 @@ import styles from './Admin.module.css';
 import {resetPoll, setMode, stopPoll, voteUniverse} from './Admin.service';
 import ResultConsole from './ResultConsole';
 import SseConsole from './SseConsole';
+import {SSEProvider} from 'react-hooks-sse';
 
 export default () => {
   const [results, setResults] = useState([]);
@@ -320,7 +321,11 @@ export default () => {
         </ul>
       </ul>
       <ResultConsole results={results}/>
-      <SseConsole/>
+      <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}>
+        <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/modes`}>
+          <SseConsole/>
+        </SSEProvider>
+      </SSEProvider>
     </div>
   );
 };
