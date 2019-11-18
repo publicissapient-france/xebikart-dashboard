@@ -209,6 +209,14 @@ export default () => {
           <li>
             <button
               className={styles.button}
+              onClick={() => setDashboardMode({mode: 'vote'})}
+            >
+              Mode Vote
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
               onClick={() => setDashboardMode({mode: 'past'})}
             >
               Mode Past
