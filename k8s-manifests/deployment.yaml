@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx-react
-        image: eu.gcr.io/xebikart-dev-1/xebikart-dashboard:latest
+        image: eu.gcr.io/xebikart-dev-1/xebikart-dashboard:@@DOCKER_TAG@@
         resources:
           requests:
             cpu: 100m
