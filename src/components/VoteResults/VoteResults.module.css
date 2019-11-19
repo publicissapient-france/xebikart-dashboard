@@ -3,7 +3,7 @@
   height: 100%;
   background: black;
   display: grid;
-  grid-template-columns: calc(1fr - 1px) 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 4%;
   overflow: hidden;
 }
