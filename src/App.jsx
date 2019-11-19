@@ -17,9 +17,13 @@ export default () => {
         <Route path="/admin">
           <Admin />
         </Route>
-        <Route path="/vote">
-          <VoteResults />
-        </Route>
+        <SSEProvider
+          endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}
+        >
+          <Route path="/vote">
+            <VoteResults />
+          </Route>
+        </SSEProvider>
         <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/modes`}>
           <Route path="/">
             <Dashboard
