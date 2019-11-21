@@ -116,4 +116,5 @@
   background-color: #f50041;
   position: absolute;
   z-index: 3;
+  top: calc(50% - 0.7vh);
 }
