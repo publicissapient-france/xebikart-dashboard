@@ -11,7 +11,7 @@
 .container__left {
   grid-row: 1;
   grid-column: 1;
-  border-right: 1px dashed #00f3c2;
+  border-right: 3px dashed #00f3c2;
   display: grid;
   grid-template-rows: 50% 10% 40%;
 }
@@ -54,9 +54,9 @@
 
 .container__digits {
   font-family: "Digital-Display";
-  font-size: 20vh;
+  font-size: 25vh;
   letter-spacing: 0.04vw;
-  height: 20vh;
+  height: 25vh;
   text-indent: 1vw;
   position: relative;
   color: #00453b;
