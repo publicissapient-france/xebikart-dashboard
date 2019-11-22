@@ -301,29 +301,29 @@ export default () => {
           <li>
             <button
               className={styles.button}
-              onClick={() => setCarMode({mode: 'ia'})}>
-              Car IA
+              onClick={() => setCarMode({mode: 'ia', data: {carId: 3}})}>
+              Car IA (3)
             </button>
           </li>
           <li>
             <button
               className={styles.button}
-              onClick={() => setCarMode({mode: 'stop'})}>
+              onClick={() => setCarMode({mode: 'ia', data: {carId: 1}})}>
+              Car IA (1)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'stop', data: {carId: 3}})}>
               Car Stop
             </button>
           </li>
           <li>
             <button
               className={styles.button}
-              onClick={() => setCarMode({mode: 'takeOver'})}>
-              Car Take Over
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'slow'})}>
-              Car Slow
+              onClick={() => setCarMode({mode: 'stop', data: {carId: 1}})}>
+              Car Stop
             </button>
           </li>
         </ul>
