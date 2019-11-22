@@ -308,6 +308,13 @@ export default () => {
           <li>
             <button
               className={styles.button}
+              onClick={() => setCarMode({mode: 'stop', data: {carId: 3}})}>
+              Car Stop (3)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
               onClick={() => setCarMode({mode: 'ia', data: {carId: 1}})}>
               Car IA (1)
             </button>
@@ -315,15 +322,8 @@ export default () => {
           <li>
             <button
               className={styles.button}
-              onClick={() => setCarMode({mode: 'stop', data: {carId: 3}})}>
-              Car Stop
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
               onClick={() => setCarMode({mode: 'stop', data: {carId: 1}})}>
-              Car Stop
+              Car Stop (1)
             </button>
           </li>
         </ul>
