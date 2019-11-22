@@ -301,8 +301,8 @@ export default () => {
           <li>
             <button
               className={styles.button}
-              onClick={() => setCarMode({mode: 'ia', data: {carId: 3}})}>
-              Car IA (3)
+              onClick={() => setCarMode({mode: 'ai', data: {carId: 3}})}>
+              Car AI (3)
             </button>
           </li>
           <li>
@@ -315,8 +315,22 @@ export default () => {
           <li>
             <button
               className={styles.button}
-              onClick={() => setCarMode({mode: 'ia', data: {carId: 1}})}>
-              Car IA (1)
+              onClick={() => setCarMode({mode: 'faster', data: {carId: 3}})}>
+              Car Stop (3)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'slower', data: {carId: 3}})}>
+              Car Stop (3)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'ai', data: {carId: 1}})}>
+              Car AI (1)
             </button>
           </li>
           <li>
@@ -324,6 +338,20 @@ export default () => {
               className={styles.button}
               onClick={() => setCarMode({mode: 'stop', data: {carId: 1}})}>
               Car Stop (1)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'faster', data: {carId: 1}})}>
+              Car Stop (3)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setCarMode({mode: 'slower', data: {carId: 1}})}>
+              Car Stop (3)
             </button>
           </li>
         </ul>
