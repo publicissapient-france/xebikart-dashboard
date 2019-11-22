@@ -68,7 +68,7 @@ export default ({ className }) => {
     return () => {
       ctx.clearRect(0, 0, 300, 200);
     };
-  }, [raceStatus]);
+  }, [raceStatus, radarIndex]);
 
   return (
     <>

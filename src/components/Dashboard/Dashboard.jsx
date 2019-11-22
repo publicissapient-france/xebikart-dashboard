@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import classnames from "classnames";
 import { Switch, Route, useHistory } from "react-router-dom";
