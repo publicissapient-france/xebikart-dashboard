@@ -209,14 +209,6 @@ export default () => {
           <li>
             <button
               className={styles.button}
-              onClick={() => setDashboardMode({mode: 'vote'})}
-            >
-              Mode Vote
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
               onClick={() => setDashboardMode({mode: 'past', data: {carId: 3}})}
             >
               Mode Past (3)
@@ -236,6 +228,14 @@ export default () => {
               onClick={() => setDashboardMode({mode: 'present', data: {carId: 1}})}
             >
               Mode Present (1)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setDashboardMode({mode: 'vote'})}
+            >
+              Mode Vote
             </button>
           </li>
           <li>
