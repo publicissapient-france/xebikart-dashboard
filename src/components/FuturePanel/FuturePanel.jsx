@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import classnames from "classnames";
 import { format } from "date-fns";
 
@@ -11,6 +11,8 @@ import rearIndicator from "./dashboard-xebikart-db3-rear.svg";
 import cover from "./dashboard-xebikart-db3-top.png";
 import radar from "./dashboard-xebikart-db3-radar.png";
 
+import radarDataSet from "../../dataset.json";
+
 const getRearZone = angle => {
   let zoneNumber = (Math.trunc((angle + 1) / (2 / 11)) + 1) % 12;
   if (zoneNumber === 0) {
@@ -19,9 +21,21 @@ const getRearZone = angle => {
   return require(`./rear-zone-${zoneNumber}.png`);
 };
 
+const normalizeRadarX = radarX => (radarX + 10000) * (220 / 20000) + 40;
+const normalizeRadarY = radarY => (radarY + 10000) * (110 / 20000) + 20;
+
 export default ({ className }) => {
+  const [radarIndex, setRadarIndex] = useState(0);
   const time = new Date();
+  const ref = useRef();
   let raceStatus;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRadarIndex(val => val + 1);
+    }, 100);
+    return () => clearInterval(interval);
+  });
 
   const raceData = useSSE("incomingData");
   if (raceData && raceData.data) {
@@ -30,10 +44,36 @@ export default ({ className }) => {
     raceStatus = { user: {} };
   }
 
+  useEffect(() => {
+    if (ref.current && ref.current.getContext) {
+      var ctx = ref.current.getContext("2d");
+      const radarCoords = radarDataSet[radarIndex % 80];
+      ctx.strokeStyle = "rgba(245,0,65,0.8)";
+      ctx.fillStyle = "rgba(245,0,65,0.2)";
+      ctx.beginPath();
+      ctx.moveTo(
+        normalizeRadarX(radarCoords[0]),
+        normalizeRadarY(radarCoords[1])
+      );
+      radarCoords.slice(1).forEach(radarCoord => {
+        ctx.lineTo(
+          normalizeRadarX(radarCoord[0]),
+          normalizeRadarY(radarCoord[1])
+        );
+      });
+      ctx.stroke();
+      ctx.closePath();
+      ctx.fill();
+    }
+    return () => {
+      ctx.clearRect(0, 0, 300, 200);
+    };
+  }, [raceStatus]);
+
   return (
     <>
       <div className={styles.radar}>
-        <canvas id="radar" className={styles.radar__pointsCloud}></canvas>
+        <canvas ref={ref} className={styles.radar__pointsCloud}></canvas>
         <img alt="radar" className={styles.radar__img} src={radar} />
       </div>
       <div className={classnames(styles.container, className)}>
@@ -63,7 +103,7 @@ export default ({ className }) => {
                   backgroundColor:
                     raceStatus.user &&
                     raceStatus.user.throttle &&
-                    raceStatus.user.throttle >= (index + 1) / 10
+                    raceStatus.user.throttle >= (index + 1) / 5
                       ? "transparent"
                       : "#004b3e"
                 }}
