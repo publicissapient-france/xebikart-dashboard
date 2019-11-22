@@ -217,25 +217,33 @@ export default () => {
           <li>
             <button
               className={styles.button}
-              onClick={() => setDashboardMode({mode: 'past'})}
+              onClick={() => setDashboardMode({mode: 'past', data: {carId: 3}})}
             >
-              Mode Past
+              Mode Past (3)
             </button>
           </li>
           <li>
             <button
               className={styles.button}
-              onClick={() => setDashboardMode({mode: 'present'})}
+              onClick={() => setDashboardMode({mode: 'present', data: {carId: 3}})}
             >
-              Mode Present
+              Mode Present (3)
             </button>
           </li>
           <li>
             <button
               className={styles.button}
-              onClick={() => setDashboardMode({mode: 'future'})}
+              onClick={() => setDashboardMode({mode: 'present', data: {carId: 1}})}
             >
-              Mode Future
+              Mode Present (1)
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setDashboardMode({mode: 'future', data: {carId: 1}})}
+            >
+              Mode Future (3)
             </button>
           </li>
         </ul>
@@ -316,14 +324,14 @@ export default () => {
             <button
               className={styles.button}
               onClick={() => setCarMode({mode: 'faster', data: {carId: 3}})}>
-              Car Stop (3)
+              Car Faster (3)
             </button>
           </li>
           <li>
             <button
               className={styles.button}
               onClick={() => setCarMode({mode: 'slower', data: {carId: 3}})}>
-              Car Stop (3)
+              Car Slower (3)
             </button>
           </li>
           <li>
@@ -344,14 +352,14 @@ export default () => {
             <button
               className={styles.button}
               onClick={() => setCarMode({mode: 'faster', data: {carId: 1}})}>
-              Car Stop (3)
+              Car Faster (3)
             </button>
           </li>
           <li>
             <button
               className={styles.button}
               onClick={() => setCarMode({mode: 'slower', data: {carId: 1}})}>
-              Car Stop (3)
+              Car Slower (3)
             </button>
           </li>
         </ul>
