@@ -1,3 +1,9 @@
+.radar {
+  position: absolute;
+  width: 20vw;
+  right: 0;
+}
+
 .container {
   position: relative;
   overflow: hidden;
@@ -37,4 +43,24 @@
   width: 18.4%;
   left: 53.1%;
   top: 10.9%;
+}
+
+.container__time {
+  font-family: "Avenir-Medium";
+  font-size: 2.9vw;
+  letter-spacing: -0.4vw;
+  position: absolute;
+  top: 33%;
+  left: 76.5%;
+  color: #949494;
+}
+
+.container__date {
+  font-family: "Avenir-Light";
+  font-size: 3vw;
+  letter-spacing: 0.01vw;
+  position: absolute;
+  top: 54%;
+  left: 76.5%;
+  color: #575757;
 }

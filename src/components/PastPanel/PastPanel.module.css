@@ -1,3 +1,9 @@
+.radar {
+  position: absolute;
+  width: 20vw;
+  right: 0;
+}
+
 .container {
   position: relative;
   overflow: hidden;
@@ -52,14 +58,32 @@
   width: 13%;
 }
 
-.container__monthDay {
+.container__month {
   position: absolute;
-  top: 78%;
-  left: 78.92%;
+  top: 80.8%;
+  left: 79.1%;
+  font-size: 1.5vw;
+  letter-spacing: 0.28vw;
+  font-family: "Avenir-Medium";
+  color: white;
+}
+
+.container__day {
+  position: absolute;
+  top: 80.8%;
+  left: 83.55%;
+  font-size: 1.5vw;
+  letter-spacing: 0.65vw;
+  font-family: "Avenir-Medium";
+  color: white;
 }
 
 .container__year {
   position: absolute;
-  top: 78%;
-  left: 88.3%;
+  top: 80.8%;
+  left: 88.55%;
+  font-size: 1.5vw;
+  letter-spacing: 0.59vw;
+  font-family: "Avenir-Medium";
+  color: white;
 }

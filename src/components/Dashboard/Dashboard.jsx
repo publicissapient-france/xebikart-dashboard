@@ -12,11 +12,7 @@ import FuturePanel from "../FuturePanel/FuturePanel";
 
 export const DASHBOARD_MODES = ["past", "present", "future"];
 
-export default ({ raceStatus, mode, className }) => {
-  const [value, setValue] = useState(0);
-  const [stirValue, setStirValue] = useState(0);
-  const [throttleValue, setThrottleValue] = useState(0);
-
+export default ({ mode, className }) => {
   const history = useHistory();
   const state = useSSE("ModeSet");
 
@@ -26,21 +22,9 @@ export default ({ raceStatus, mode, className }) => {
       state.data.mode &&
       DASHBOARD_MODES.find(d => d === state.data.mode)
     ) {
-      history.push(state.data.mode);
+      history.push(`/${state.data.mode}/${state.data.data.carId}`);
     }
   }, [history, state]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setValue({
-        x: Math.random() * 100,
-        y: Math.random() * 100
-      });
-      setStirValue(Math.random() * (Math.random() > 0.5 ? 1 : -1));
-      setThrottleValue(Math.random());
-    }, 1000);
-    return () => clearInterval(interval);
-  });
 
   return (
     <div
@@ -51,50 +35,28 @@ export default ({ raceStatus, mode, className }) => {
       )}
     >
       <div className={styles.container__video}>
-        <SSEProvider
-          endpoint={`${process.env.REACT_APP_BACKEND_HOST}/car/video`}
-        >
-          <CarVideo />
-        </SSEProvider>
+        <Route path="/:mode/:carId" component={CarVideo} />
       </div>
       <Switch>
         <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/events`}>
-          <Route path="/past">
-            <PastPanel
-              raceStatus={{
-                user: {
-                  throttle: throttleValue,
-                  angle: stirValue,
-                  position: value
-                }
-              }}
-              className={styles.container__panel}
-            />
-          </Route>
-          <Route path="/present">
-            <PresentPanel
-              raceStatus={{
-                user: {
-                  throttle: throttleValue,
-                  angle: stirValue,
-                  position: value
-                }
-              }}
-              className={styles.container__panel}
-            />
-          </Route>
-          <Route path="/future">
-            <FuturePanel
-              raceStatus={{
-                user: {
-                  throttle: throttleValue,
-                  angle: stirValue,
-                  position: value
-                }
-              }}
-              className={styles.container__panel}
-            />
-          </Route>
+          <Route
+            path="/past/:carId?"
+            render={props => (
+              <PastPanel {...props} className={styles.container__panel} />
+            )}
+          />
+          <Route
+            path="/present/:carId?"
+            render={props => (
+              <PresentPanel {...props} className={styles.container__panel} />
+            )}
+          />
+          <Route
+            path="/future/:carId?"
+            render={props => (
+              <FuturePanel {...props} className={styles.container__panel} />
+            )}
+          />
         </SSEProvider>
       </Switch>
     </div>
