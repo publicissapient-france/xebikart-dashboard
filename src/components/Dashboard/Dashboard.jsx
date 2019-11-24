@@ -9,10 +9,11 @@ import CarVideo from "../CarVideo/CarVideo";
 import PastPanel from "../PastPanel/PastPanel";
 import PresentPanel from "../PresentPanel/PresentPanel";
 import FuturePanel from "../FuturePanel/FuturePanel";
+import VoteResults from "../VoteResults/VoteResults";
 
-export const DASHBOARD_MODES = ["past", "present", "future"];
+export const DASHBOARD_MODES = ["past", "present", "future", "vote"];
 
-export default ({ mode, className }) => {
+export default ({mode, className}) => {
   const history = useHistory();
   const state = useSSE("ModeSet");
 
@@ -22,7 +23,11 @@ export default ({ mode, className }) => {
       state.data.mode &&
       DASHBOARD_MODES.find(d => d === state.data.mode)
     ) {
-      history.push(`/${state.data.mode}/${state.data.data.carId}`);
+      if (state.data.data && state.data.data.carId) {
+        history.push(`/${state.data.mode}/${state.data.data.carId}`);
+      } else {
+        history.push(`/${state.data.mode}`);
+      }
     }
   }, [history, state]);
 
@@ -57,6 +62,13 @@ export default ({ mode, className }) => {
               <FuturePanel {...props} className={styles.container__panel} />
             )}
           />
+          <Route path="/vote">
+            <SSEProvider
+              endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}
+            >
+              <VoteResults />
+            </SSEProvider>
+          </Route>
         </SSEProvider>
       </Switch>
     </div>

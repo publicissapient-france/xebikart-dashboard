@@ -4,7 +4,6 @@ import { SSEProvider } from "react-hooks-sse";
 
 import Dashboard, { DASHBOARD_MODES } from "./components/Dashboard/Dashboard";
 import Admin from "./components/Admin/Admin";
-import VoteResults from "./components/VoteResults/VoteResults";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -16,13 +15,6 @@ export default () => {
       <Switch>
         <Route path="/admin">
           <Admin />
-        </Route>
-        <Route path="/vote">
-          <SSEProvider
-            endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}
-          >
-            <VoteResults />
-          </SSEProvider>
         </Route>
         <Route>
           <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/modes`}>
