@@ -153,6 +153,94 @@ export default () => {
         <li>
           <h1 className={styles.title}>Admin</h1>
         </li>
+        <li className={styles.dashboard}>
+          <button
+            className={styles.button}
+            onClick={() => setDashboardMode({mode: 'past', data: {carId: 3}})}
+          >
+            Mode Past (3)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'stop', data: {carId: 3}})}>
+            Car Stop (3)
+          </button>
+        </li>
+        <li className={styles.dashboard}>
+          <button
+            className={styles.button}
+            onClick={() => setDashboardMode({mode: 'present', data: {carId: 3}})}
+          >
+            Mode Present (3)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'ai', data: {carId: 3}})}>
+            Car AI (3)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'faster', data: {carId: 3}})}>
+            Car Faster (3)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'slower', data: {carId: 3}})}>
+            Car Slower (3)
+          </button>
+        </li>
+        <li className={styles.dashboard}>
+          <button
+            className={styles.button}
+            onClick={() => setDashboardMode({mode: 'present', data: {carId: 1}})}
+          >
+            Mode Present (1)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'ai', data: {carId: 1}})}>
+            Car AI (1)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'stop', data: {carId: 1}})}>
+            Car Stop (1)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'faster', data: {carId: 1}})}>
+            Car Faster (1)
+          </button>
+        </li>
+        <li className={styles.car}>
+          <button
+            className={styles.button}
+            onClick={() => setCarMode({mode: 'slower', data: {carId: 1}})}>
+            Car Slower (1)
+          </button>
+        </li>
+        <li className={styles.dashboard}>
+          <button
+            className={styles.button}
+            onClick={() => setDashboardMode({mode: 'vote'})}
+          >
+            Mode Vote
+          </button>
+        </li>
         <ul className={styles.poll}>
           <li>
             <button
@@ -205,48 +293,14 @@ export default () => {
             </button>
           </li>
         </ul>
-        <ul className={styles.dashboard}>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setDashboardMode({mode: 'past', data: {carId: 3}})}
-            >
-              Mode Past (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setDashboardMode({mode: 'present', data: {carId: 3}})}
-            >
-              Mode Present (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setDashboardMode({mode: 'present', data: {carId: 1}})}
-            >
-              Mode Present (1)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setDashboardMode({mode: 'vote'})}
-            >
-              Mode Vote
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setDashboardMode({mode: 'future', data: {carId: 1}})}
-            >
-              Mode Future (3)
-            </button>
-          </li>
-        </ul>
+        <li className={styles.dashboard}>
+          <button
+            className={styles.button}
+            onClick={() => setDashboardMode({mode: 'future', data: {carId: 1}})}
+          >
+            Mode Future (3)
+          </button>
+        </li>
         <ul className={styles.ar}>
           <li>
             <button
@@ -302,64 +356,6 @@ export default () => {
               onClick={() => setArMode({mode: 'obstacle', data: {active: false}})}
             >
               AR Obstacle OFF
-            </button>
-          </li>
-        </ul>
-        <ul className={styles.car}>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'ai', data: {carId: 3}})}>
-              Car AI (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'stop', data: {carId: 3}})}>
-              Car Stop (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'faster', data: {carId: 3}})}>
-              Car Faster (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'slower', data: {carId: 3}})}>
-              Car Slower (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'ai', data: {carId: 1}})}>
-              Car AI (1)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'stop', data: {carId: 1}})}>
-              Car Stop (1)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'faster', data: {carId: 1}})}>
-              Car Faster (3)
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setCarMode({mode: 'slower', data: {carId: 1}})}>
-              Car Slower (3)
             </button>
           </li>
         </ul>
