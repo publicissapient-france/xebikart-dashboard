@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import styles from './Admin.module.css';
-import {resetPoll, setMode, stopPoll, voteUniverse} from './Admin.service';
+import { resetPoll, setMode, stopPoll, voteUniverse } from './Admin.service';
 import ResultConsole from './ResultConsole';
 import SseConsole from './SseConsole';
-import {SSEProvider} from 'react-hooks-sse';
+import { SSEProvider } from 'react-hooks-sse';
 
 export default () => {
   const [results, setResults] = useState([]);
@@ -147,11 +147,42 @@ export default () => {
     }
   };
 
+  const setVideoMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: result,
+          text: `Set Video ${mode.mode} ${mode.data.videoId}`
+        },
+        ...results,
+      ])
+    } catch (e) {
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: false,
+          text: `Error when setting Video mode`
+        },
+        ...results,
+      ]);
+    }
+  };
+
   return (
     <div className={styles.admin}>
       <ul className={styles.actions}>
         <li>
           <h1 className={styles.title}>Admin</h1>
+        </li>
+        <li className={styles.video}>
+          <button
+            className={styles.button}
+            onClick={() => setVideoMode({mode: 'video', data: {videoId: 'keynote-xebicon-intro.mp4'}})}
+          >
+            Video (keynote-xebicon-intro)
+          </button>
         </li>
         <li className={styles.dashboard}>
           <button
@@ -195,6 +226,14 @@ export default () => {
             className={styles.button}
             onClick={() => setCarMode({mode: 'slower', data: {carId: 3}})}>
             Car Slower (3)
+          </button>
+        </li>
+        <li className={styles.video}>
+          <button
+            className={styles.button}
+            onClick={() => setVideoMode({mode: 'video', data: {videoId: 'keynote-xebicon-past-to-now.mp4'}})}
+          >
+            Video (keynote-xebicon-past-to-now)
           </button>
         </li>
         <li className={styles.dashboard}>
@@ -360,10 +399,10 @@ export default () => {
           </li>
         </ul>
       </ul>
-      <ResultConsole results={results}/>
+      <ResultConsole results={results} />
       <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}>
         <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/modes`}>
-          <SseConsole/>
+          <SseConsole />
         </SSEProvider>
       </SSEProvider>
     </div>

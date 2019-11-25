@@ -10,8 +10,9 @@ import PastPanel from "../PastPanel/PastPanel";
 import PresentPanel from "../PresentPanel/PresentPanel";
 import FuturePanel from "../FuturePanel/FuturePanel";
 import VoteResults from "../VoteResults/VoteResults";
+import Video from "../Video/Video";
 
-export const DASHBOARD_MODES = ["past", "present", "future", "vote"];
+export const DASHBOARD_MODES = ["past", "present", "future", "vote", "video"];
 
 export default ({mode, className}) => {
   const history = useHistory();
@@ -23,8 +24,12 @@ export default ({mode, className}) => {
       state.data.mode &&
       DASHBOARD_MODES.find(d => d === state.data.mode)
     ) {
-      if (state.data.data && state.data.data.carId) {
-        history.push(`/${state.data.mode}/${state.data.data.carId}`);
+      if (state.data.data) {
+        if (state.data.data.carId) {
+          history.push(`/${state.data.mode}/${state.data.data.carId}`);
+        } else if (state.data.data.videoId) {
+          history.push(`/${state.data.mode}/${state.data.data.videoId}`);
+        }
       } else {
         history.push(`/${state.data.mode}`);
       }
@@ -39,27 +44,39 @@ export default ({mode, className}) => {
         className
       )}
     >
-      <div className={styles.container__video}>
-        <Route path="/:mode/:carId" component={CarVideo} />
-      </div>
       <Switch>
         <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/events`}>
           <Route
             path="/past/:carId?"
             render={props => (
-              <PastPanel {...props} className={styles.container__panel} />
+              <>
+                <div className={styles.container__video}>
+                  <Route path="/:mode/:carId" component={CarVideo} />
+                </div>
+                <PastPanel {...props} className={styles.container__panel} />
+              </>
             )}
           />
           <Route
             path="/present/:carId?"
             render={props => (
-              <PresentPanel {...props} className={styles.container__panel} />
+              <>
+                <div className={styles.container__video}>
+                  <Route path="/:mode/:carId" component={CarVideo} />
+                </div>
+                <PresentPanel {...props} className={styles.container__panel} />
+              </>
             )}
           />
           <Route
             path="/future/:carId?"
             render={props => (
-              <FuturePanel {...props} className={styles.container__panel} />
+              <>
+                <div className={styles.container__video}>
+                  <Route path="/:mode/:carId" component={CarVideo} />
+                </div>
+                <FuturePanel {...props} className={styles.container__panel} />
+              </>
             )}
           />
           <Route path="/vote">
@@ -69,6 +86,10 @@ export default ({mode, className}) => {
               <VoteResults />
             </SSEProvider>
           </Route>
+          <Route
+            path="/video/:videoId"
+            component={Video}
+          />
         </SSEProvider>
       </Switch>
     </div>
