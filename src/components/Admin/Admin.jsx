@@ -170,6 +170,29 @@ export default () => {
     }
   };
 
+  const setThankYouMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: result,
+          text: `Set Thank You`
+        },
+        ...results,
+      ])
+    } catch (e) {
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: false,
+          text: `Error when setting Thank You mode`
+        },
+        ...results,
+      ]);
+    }
+  };
+
   return (
     <div className={styles.admin}>
       <ul className={styles.actions}>
@@ -398,6 +421,14 @@ export default () => {
             </button>
           </li>
         </ul>
+        <li className={styles.thankyou}>
+          <button
+            className={styles.button}
+            onClick={() => setThankYouMode({mode: 'thankyou'})}
+          >
+            Thank You
+          </button>
+        </li>
       </ul>
       <ResultConsole results={results} />
       <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}>

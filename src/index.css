@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain) */
@@ -142,8 +144,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -157,7 +159,7 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
 }
 
 @font-face {
@@ -177,6 +179,13 @@ code {
 @font-face {
   font-family: "Avenir-Light";
   src: url("./fonts/Avenir-Light.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Auto-Digital";
+  src: url("./fonts/Auto-Digital.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

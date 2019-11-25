@@ -11,8 +11,9 @@ import PresentPanel from "../PresentPanel/PresentPanel";
 import FuturePanel from "../FuturePanel/FuturePanel";
 import VoteResults from "../VoteResults/VoteResults";
 import Video from "../Video/Video";
+import ThankYou from "../ThankYou/ThankYou";
 
-export const DASHBOARD_MODES = ["past", "present", "future", "vote", "video"];
+export const DASHBOARD_MODES = ["past", "present", "future", "vote", "video", "thankyou"];
 
 export default ({mode, className}) => {
   const history = useHistory();
@@ -89,6 +90,10 @@ export default ({mode, className}) => {
           <Route
             path="/video/:videoId"
             component={Video}
+          />
+          <Route
+            path="/thankyou"
+            component={ThankYou}
           />
         </SSEProvider>
       </Switch>
