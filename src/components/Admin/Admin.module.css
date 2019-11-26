@@ -126,3 +126,7 @@
 .thankyou .button {
   background-color: darkviolet;
 }
+
+.update .button {
+  background-color: orangered;
+}

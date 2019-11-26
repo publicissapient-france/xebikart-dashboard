@@ -1,0 +1,23 @@
+.update {
+  background-color: #000000;
+  display: grid;
+  grid-gap: 5%;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  justify-items: center;
+}
+
+.ko {
+  background-color: red;
+  height: 40vh;
+  width: 40vh;
+  border-radius: 100%;
+}
+
+.ok {
+  background-color: green;
+  height: 40vh;
+  width: 40vh;
+  border-radius: 100%;
+}

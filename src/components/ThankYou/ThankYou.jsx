@@ -1,15 +1,18 @@
 import React from "react";
 
 import top from "./theymadeit-top.svg";
-import image from "./theymadeit.png";
 import styles from "./ThankYou.module.css";
 
 export default () => {
   return (
     <section className={styles.container}>
       <div className={styles.container__indicator}>
-        <div className={styles.container__indicator__invisible}></div>
-        <div className={styles.container__indicator__red}></div>
+        <div className={styles.container__indicator__invisible}>
+
+        </div>
+        <div className={styles.container__indicator__red}>
+
+        </div>
       </div>
       <img className={styles.container__background} src={top} />
       <div className={styles.container__contributors}>

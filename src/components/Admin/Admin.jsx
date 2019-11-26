@@ -193,6 +193,29 @@ export default () => {
     }
   };
 
+  const setUpdateMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: result,
+          text: `Set Update`
+        },
+        ...results,
+      ])
+    } catch (e) {
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: false,
+          text: `Error when setting Update mode`
+        },
+        ...results,
+      ]);
+    }
+  };
+
   return (
     <div className={styles.admin}>
       <ul className={styles.actions}>
@@ -220,6 +243,14 @@ export default () => {
             className={styles.button}
             onClick={() => setCarMode({mode: 'stop', data: {carId: 3}})}>
             Car Stop (3)
+          </button>
+        </li>
+        <li className={styles.video}>
+          <button
+            className={styles.button}
+            onClick={() => setVideoMode({mode: 'video', data: {videoId: 'keynote-xebicon-past-to-now.mp4'}})}
+          >
+            Video (keynote-xebicon-past-to-now)
           </button>
         </li>
         <li className={styles.dashboard}>
@@ -251,12 +282,12 @@ export default () => {
             Car Slower (3)
           </button>
         </li>
-        <li className={styles.video}>
+        <li className={styles.update}>
           <button
             className={styles.button}
-            onClick={() => setVideoMode({mode: 'video', data: {videoId: 'keynote-xebicon-past-to-now.mp4'}})}
+            onClick={() => setUpdateMode({mode: 'update'})}
           >
-            Video (keynote-xebicon-past-to-now)
+            Mode Update
           </button>
         </li>
         <li className={styles.dashboard}>
@@ -295,6 +326,32 @@ export default () => {
             Car Slower (1)
           </button>
         </li>
+        <ul className={styles.ar}>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'city'})}
+            >
+              AR City
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'cityOverboard'})}
+            >
+              AR City Overboard
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.button}
+              onClick={() => setArMode({mode: 'cityNike'})}
+            >
+              AR City Nike
+            </button>
+          </li>
+        </ul>
         <li className={styles.dashboard}>
           <button
             className={styles.button}
@@ -336,8 +393,6 @@ export default () => {
               Vote Universe 2 (iOS)
             </button>
           </li>
-        </ul>
-        <ul className={styles.controlPoll}>
           <li>
             <button className={styles.button} onClick={stopUniversePoll}>
             <span role="img" aria-label="stop">
@@ -355,6 +410,14 @@ export default () => {
             </button>
           </li>
         </ul>
+        <li className={styles.video}>
+          <button
+            className={styles.button}
+            onClick={() => setVideoMode({mode: 'video', data: {videoId: 'keynote-xebicon-now-to-future.mp4'}})}
+          >
+            Video (keynote-xebicon-now-to-future)
+          </button>
+        </li>
         <li className={styles.dashboard}>
           <button
             className={styles.button}
@@ -364,30 +427,6 @@ export default () => {
           </button>
         </li>
         <ul className={styles.ar}>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setArMode({mode: 'city'})}
-            >
-              AR City
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setArMode({mode: 'cityOverboard'})}
-            >
-              AR City Overboard
-            </button>
-          </li>
-          <li>
-            <button
-              className={styles.button}
-              onClick={() => setArMode({mode: 'cityNike'})}
-            >
-              AR City Nike
-            </button>
-          </li>
           <li>
             <button
               className={styles.button}
