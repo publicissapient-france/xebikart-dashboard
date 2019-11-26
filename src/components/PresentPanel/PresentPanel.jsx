@@ -13,6 +13,7 @@ import positionIndicator from "./dashboard-xebikart-db2-position.svg";
 import radar from "./dashboard-xebikart-db2-radar.png";
 
 import radarDataSet from "../../dataset.json";
+import positionIndicators from "./positionIndicator";
 
 const normalizeRadarX = radarX => (radarX + 10000) * (220 / 20000) + 40;
 const normalizeRadarY = radarY => (radarY + 10000) * (110 / 20000) + 20;
@@ -115,6 +116,7 @@ export default ({ className }) => {
           alt="position"
           src={positionIndicator}
           className={styles.container__positionIndicator}
+          {...positionIndicators[radarIndex % positionIndicators.length]}
         />
         <div className={styles.container__time}>{format(time, "kk : mm")}</div>
         <div className={styles.container__date}>NOV 28 2019</div>

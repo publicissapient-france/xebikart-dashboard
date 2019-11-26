@@ -3,8 +3,6 @@
 <svg version="1.2" baseProfile="tiny" id="Calque_1"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="460px" height="150px"
 	 viewBox="0 0 460 150" xml:space="preserve">
-<path id="tracer-position" fill-rule="evenodd" fill="none" stroke="#FF0000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="
-	M330,150H130c-11,0-20-9-20-20V20c0-11,9-20,20-20h200c11,0,20,9,20,20v110C350,141,341,150,330,150z"/>
 <g>
 	<g>
 		<path fill="#FF0000" d="M457.7,72.6L270,60.7l0,30l187.7-11.9c0.7-0.1,2.3-2,2.3-3.1C460,74.6,458.4,72.6,457.7,72.6z"/>

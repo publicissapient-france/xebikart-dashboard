@@ -24,6 +24,10 @@
   display: block;
 }
 
+.container__redIndicator {
+  position: absolute;
+}
+
 .container__cover {
   width: 100%;
   position: absolute;

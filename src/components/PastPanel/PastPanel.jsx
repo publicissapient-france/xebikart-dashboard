@@ -15,6 +15,7 @@ import cover from "./dashboard-xebikart-db1-top.png";
 import radar from "./dashboard-xebikart-db1-radar.png";
 
 import radarDataSet from "../../dataset.json";
+import positionIndicators from "./positionIndicator";
 
 const normalizeRadarX = radarX => (radarX + 10000) * (200 / 20000) + 50;
 const normalizeRadarY = radarY => (radarY + 10000) * (90 / 20000) + 30;
@@ -105,6 +106,7 @@ export default ({ match, className }) => {
           alt="position"
           src={positionIndicator}
           className={styles.container__positionIndicator}
+          {...positionIndicators[radarIndex % positionIndicators.length]}
         />
         <img
           alt="minute"

@@ -13,6 +13,8 @@ import radar from "./dashboard-xebikart-db3-radar.png";
 
 import radarDataSet from "../../dataset.json";
 
+import positionIndicators from "./positionIndicator";
+
 const getRearZone = angle => {
   let zoneNumber = (Math.trunc((angle + 1) / (2 / 11)) + 1) % 12;
   if (zoneNumber === 0) {
@@ -81,6 +83,11 @@ export default ({ className }) => {
           alt="background"
           className={styles.container__background}
           src={background}
+        />
+        <img
+          alt="red-indicator"
+          className={styles.container__redIndicator}
+          {...positionIndicators[radarIndex % positionIndicators.length]}
         />
         <div className={styles["container__speedCounter--mph"]}>
           {raceStatus.user && raceStatus.user.throttle

@@ -14,7 +14,11 @@ export default () => {
 
         </div>
       </div>
-      <img className={styles.container__background} src={top} />
+      <img
+        className={styles.container__background}
+        src={top}
+        alt="background-img"
+      />
       <div className={styles.container__contributors}>
         <div className={styles.contributors__column}>
           <span>Anne</span>
