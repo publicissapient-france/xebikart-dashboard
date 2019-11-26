@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSSE } from "react-hooks-sse";
 import classnames from "classnames";
 
@@ -10,7 +10,11 @@ import unicornImage from "./licorne.png";
 import zombieImage from "./zombie.png";
 import cadreImage from "./cadre.svg";
 
-export default ({className}) => {
+import confettiExplosion from "./explosion";
+
+export default ({ className }) => {
+  const leftBarRef = useRef(null);
+  const rightBarRef = useRef(null);
   const votes = useSSE("SurveyVoteReceived", {
     initialState: {
       zombie: 0,
@@ -18,11 +22,13 @@ export default ({className}) => {
     },
     stateReducer: (state, changes) => {
       if (changes.data.vote.choice === "1") {
+        confettiExplosion(leftBarRef.current);
         return {
           ...state,
           zombie: state.zombie + 1
         };
       } else if (changes.data.vote.choice === "2") {
+        confettiExplosion(rightBarRef.current, { angle: 135 });
         return {
           ...state,
           unicorn: state.unicorn + 1
@@ -53,9 +59,7 @@ export default ({className}) => {
         />
         <div className={styles.container__digits}>
           000
-          <div className={styles.container__digits__full}>
-            {votes.zombie}
-          </div>
+          <div className={styles.container__digits__full}>{votes.zombie}</div>
         </div>
         <div className={styles.container__emptyDigits}>000</div>
       </div>
@@ -79,9 +83,7 @@ export default ({className}) => {
         />
         <div className={styles.container__digits}>
           000
-          <div className={styles.container__digits__full}>
-            {votes.unicorn}
-          </div>
+          <div className={styles.container__digits__full}>{votes.unicorn}</div>
         </div>
       </div>
       <div className={styles.container__bottom}>
@@ -90,14 +92,14 @@ export default ({className}) => {
             styles.container__bottom__progress,
             styles["container__bottom__progress--left"]
           )}
-          style={{width: `${votes.zombie / 10}%`}}
+          style={{ width: `${votes.zombie / 10}%` }}
         />
         <div
           className={classnames(
             styles.container__bottom__progress,
             styles["container__bottom__progress--right"]
           )}
-          style={{width: `${votes.unicorn / 10}%`}}
+          style={{ width: `${votes.unicorn / 10}%` }}
         />
         {Array(20)
           .fill(0)
@@ -105,11 +107,13 @@ export default ({className}) => {
             <div className={styles.container__bottom__emptyBar}></div>
           ))}
         <div
-          style={{left: `calc(${votes.zombie / 10}% - 0.75vh)`}}
+          ref={leftBarRef}
+          style={{ left: `calc(${votes.zombie / 10}% - 0.75vh)` }}
           className={styles.container__bottom__progressPoint}
         />
         <div
-          style={{right: `calc(${votes.unicorn / 10}% - 0.75vh)`}}
+          ref={rightBarRef}
+          style={{ right: `calc(${votes.unicorn / 10}% - 0.75vh)` }}
           className={styles.container__bottom__progressPoint}
         />
       </div>

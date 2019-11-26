@@ -1,0 +1,8 @@
+.fetti {
+  background: transparent 50% 50% no-repeat / contain;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
