@@ -9,14 +9,14 @@
 }
 
 .ko {
-  background-color: red;
+  background-color: #FE414D;
   height: 40vh;
   width: 40vh;
   border-radius: 100%;
 }
 
 .ok {
-  background-color: green;
+  background-color: #00E6C3;
   height: 40vh;
   width: 40vh;
   border-radius: 100%;
