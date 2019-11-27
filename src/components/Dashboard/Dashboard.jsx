@@ -51,62 +51,54 @@ export default ({ mode, className }) => {
   }, [history, state]);
 
   return (
-    <div
-      className={classnames(
-        styles.container,
-        styles[`container--${mode}`],
-        className
-      )}
-    >
-      <Switch>
-        <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/events`}>
-          <Route
-            path="/past/:carId?"
-            render={props => (
-              <>
-                <div className={styles.container__video}>
-                  <Route path="/:mode/:carId" component={CarVideo} />
-                </div>
-                <PastPanel {...props} className={styles.container__panel} />
-              </>
-            )}
-          />
-          <Route
-            path="/present/:carId?"
-            render={props => (
-              <>
-                <div className={styles.container__video}>
-                  <Route path="/:mode/:carId" component={CarVideo} />
-                </div>
-                <PresentPanel {...props} className={styles.container__panel} />
-              </>
-            )}
-          />
-          <Route
-            path="/future/:carId?"
-            render={props => (
-              <>
-                <div className={styles.container__video}>
-                  <Route path="/:mode/:carId" component={CarVideo} />
-                </div>
-                <FuturePanel {...props} className={styles.container__panel} />
-              </>
-            )}
-          />
-          <Route path="/vote">
-            <SSEProvider
-              endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}
-            >
-              <VoteResults />
-            </SSEProvider>
-          </Route>
-          <Route path="/video/:videoId" component={Video} />
-          <Route path="/thankyou" component={ThankYou} />
-          <Route path="/update" component={Update} />
-          <Route path="/image/:imageId" component={Image} />
-        </SSEProvider>
-      </Switch>
-    </div>
+    <Switch>
+      <SSEProvider endpoint={`${process.env.REACT_APP_BACKEND_HOST}/events`}>
+        <Route
+          path="/past/:carId?"
+          render={props => (
+            <div className={classnames(styles.container, className)}>
+              <div className={styles.container__video}>
+                <Route path="/:mode/:carId" component={CarVideo} />
+              </div>
+              <PastPanel {...props} className={styles.container__panel} />
+            </div>
+          )}
+        />
+        <Route
+          path="/present/:carId?"
+          render={props => (
+            <div className={classnames(styles.container, className)}>
+              <div className={styles.container__video}>
+                <Route path="/:mode/:carId" component={CarVideo} />
+              </div>
+              <PresentPanel {...props} className={styles.container__panel} />
+            </div>
+          )}
+        />
+        <Route
+          path="/future/:carId?"
+          render={props => (
+            <div className={classnames(styles.container, className)}>
+              <div className={styles.container__video}>
+                <Route path="/:mode/:carId" component={CarVideo} />
+              </div>
+              <FuturePanel {...props} className={styles.container__panel} />
+            </div>
+          )}
+        />
+        <Route path="/vote">
+          <SSEProvider
+            endpoint={`${process.env.REACT_APP_BACKEND_HOST}/universes`}
+          >
+            <VoteResults />
+          </SSEProvider>
+        </Route>
+        <Route path="/video/:videoId" component={Video} />
+        <Route path="/thankyou" component={ThankYou} />
+        <Route path="/update" component={Update} />
+        <Route path="/image/:imageId" component={Image} />
+      </SSEProvider>
+    </Switch>
   );
 
   // user.angle : -1 a 1

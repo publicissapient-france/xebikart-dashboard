@@ -3,6 +3,10 @@
   align-items: center;
   background-color: #000000;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  grid-row: span 1 / 3;
 }
 
 .side {
@@ -10,7 +14,7 @@
 }
 
 .container__background {
-  background-color: #0D2922;
+  background-color: #0d2922;
   position: relative;
 }
 
@@ -25,12 +29,12 @@
 }
 
 .contributors__column {
-  font-family: 'Tomorrow';
+  font-family: "Tomorrow";
   font-size: 2.2vw;
   line-height: 150%;
   text-align: center;
   flex-grow: 1;
-  color: #00E6C3;
+  color: #00e6c3;
 }
 
 .contributors__column span {
@@ -46,7 +50,7 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  filter: blur(.4vw);
+  filter: blur(0.4vw);
   display: flex;
   animation: rotate 6s linear infinite;
 }
@@ -56,13 +60,13 @@
 }
 
 .container__indicator__red {
-  background: #FF434E;
+  background: #ff434e;
   width: 50%;
   height: 100%;
 }
 
 .container__image {
-  width: 100vw;
+  width: 100%;
 }
 
 @keyframes rotate {
@@ -79,7 +83,7 @@
   color: white;
   font-size: 2vw;
   text-transform: uppercase;
-  background-color: #FF434E;
+  background-color: #ff434e;
   position: absolute;
   bottom: 13%;
   width: 100%;
