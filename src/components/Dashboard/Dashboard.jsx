@@ -15,9 +15,18 @@ import Image from "../Image/Image";
 import ThankYou from "../ThankYou/ThankYou";
 import Update from "../Update/Update";
 
-export const DASHBOARD_MODES = ["past", "present", "future", "vote", "video", "thankyou", "update", "image"];
+export const DASHBOARD_MODES = [
+  "past",
+  "present",
+  "future",
+  "vote",
+  "video",
+  "thankyou",
+  "update",
+  "image"
+];
 
-export default ({mode, className}) => {
+export default ({ mode, className }) => {
   const history = useHistory();
   const state = useSSE("ModeSet");
 
@@ -91,22 +100,10 @@ export default ({mode, className}) => {
               <VoteResults />
             </SSEProvider>
           </Route>
-          <Route
-            path="/video/:videoId"
-            component={Video}
-          />
-          <Route
-            path="/thankyou"
-            component={ThankYou}
-          />
-          <Route
-            path="/update"
-            component={Update}
-          />
-          <Route
-            path="/image/:imageId"
-            component={Image}
-          />
+          <Route path="/video/:videoId" component={Video} />
+          <Route path="/thankyou" component={ThankYou} />
+          <Route path="/update" component={Update} />
+          <Route path="/image/:imageId" component={Image} />
         </SSEProvider>
       </Switch>
     </div>

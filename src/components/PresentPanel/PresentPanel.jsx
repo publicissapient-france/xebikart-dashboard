@@ -12,24 +12,29 @@ import rearIndicator from "./dashboard-xebikart-db2-rear.svg";
 import positionIndicator from "./dashboard-xebikart-db2-position.svg";
 import radar from "./dashboard-xebikart-db2-radar.png";
 
-import radarDataSet from "../../dataset.json";
 import positionIndicators from "./positionIndicator";
 
 const normalizeRadarX = radarX => (radarX + 10000) * (220 / 20000) + 40;
 const normalizeRadarY = radarY => (radarY + 10000) * (110 / 20000) + 20;
 
-export default ({ className }) => {
+export default ({ match, className }) => {
   const [radarIndex, setRadarIndex] = useState(0);
   const time = new Date();
   const ref = useRef();
-  let raceStatus;
 
-  const raceData = useSSE("incomingData");
-  if (raceData && raceData.data) {
-    raceStatus = raceData.data;
-  } else {
-    raceStatus = { user: {} };
-  }
+  const raceStatus = useSSE("incomingData", {
+    initialState: {
+      user: {},
+      borders: []
+    },
+    stateReducer: (state, changes) => {
+      if (changes.data.car === parseInt(match.params.carId)) {
+        return changes.data;
+      } else {
+        return state;
+      }
+    }
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,9 +44,10 @@ export default ({ className }) => {
   });
 
   useEffect(() => {
-    if (ref.current && ref.current.getContext) {
+    if (raceStatus.borders && ref.current && ref.current.getContext) {
       var ctx = ref.current.getContext("2d");
-      const radarCoords = radarDataSet[radarIndex % 80];
+      // const radarCoords = radarDataSet[radarIndex % 80];
+      const radarCoords = raceStatus.borders;
       ctx.strokeStyle = "rgba(245,0,65,0.8)";
       ctx.fillStyle = "rgba(245,0,65,0.2)";
       ctx.beginPath();
@@ -60,9 +66,9 @@ export default ({ className }) => {
       ctx.fill();
     }
     return () => {
-      ctx.clearRect(0, 0, 300, 200);
+      ctx && ctx.clearRect(0, 0, 300, 200);
     };
-  }, [raceStatus, radarIndex]);
+  }, [raceStatus]);
 
   return (
     <>
@@ -117,6 +123,7 @@ export default ({ className }) => {
           src={positionIndicator}
           className={styles.container__positionIndicator}
           {...positionIndicators[radarIndex % positionIndicators.length]}
+          // {...positionIndicators[39 % positionIndicators.length]}
         />
         <div className={styles.container__time}>{format(time, "kk : mm")}</div>
         <div className={styles.container__date}>NOV 28 2019</div>

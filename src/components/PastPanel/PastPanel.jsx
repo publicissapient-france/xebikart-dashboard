@@ -14,17 +14,18 @@ import positionIndicator from "./dashboard-xebikart-db1-position.svg";
 import cover from "./dashboard-xebikart-db1-top.png";
 import radar from "./dashboard-xebikart-db1-radar.png";
 
-import radarDataSet from "../../dataset.json";
 import positionIndicators from "./positionIndicator";
 
-const normalizeRadarX = radarX => (radarX + 10000) * (200 / 20000) + 50;
-const normalizeRadarY = radarY => (radarY + 10000) * (90 / 20000) + 30;
+// const normalizeRadarX = radarX => (radarX + 10000) * (200 / 20000) + 50;
+// const normalizeRadarY = radarY => (radarY + 10000) * (90 / 20000) + 30;
+
+const normalizeRadarX = radarX => (radarX + 6000) * (220 / 12000) + 50;
+const normalizeRadarY = radarY => (radarY + 6000) * (110 / 12000) + 30;
 
 export default ({ match, className }) => {
   const [radarIndex, setRadarIndex] = useState(0);
   const time = new Date();
   const ref = useRef();
-  let raceStatus;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,17 +34,25 @@ export default ({ match, className }) => {
     return () => clearInterval(interval);
   });
 
-  const raceData = useSSE("incomingData");
-  if (raceData && raceData.data) {
-    raceStatus = raceData.data;
-  } else {
-    raceStatus = { user: {} };
-  }
+  const raceStatus = useSSE("incomingData", {
+    initialState: {
+      user: {},
+      borders: []
+    },
+    stateReducer: (state, changes) => {
+      if (changes.data.car === parseInt(match.params.carId)) {
+        return changes.data;
+      } else {
+        return state;
+      }
+    }
+  });
 
   useEffect(() => {
-    if (ref.current && ref.current.getContext) {
+    if (raceStatus.borders && ref.current && ref.current.getContext) {
       var ctx = ref.current.getContext("2d");
-      const radarCoords = radarDataSet[radarIndex % 80];
+      // const radarCoords = radarDataSet[radarIndex % 80];
+      const radarCoords = raceStatus.borders;
       ctx.strokeStyle = "rgba(245,0,65,0.8)";
       ctx.fillStyle = "rgba(245,0,65,0.2)";
       ctx.beginPath();
@@ -62,9 +71,9 @@ export default ({ match, className }) => {
       ctx.fill();
     }
     return () => {
-      ctx.clearRect(0, 0, 300, 200);
+      ctx && ctx.clearRect(0, 0, 300, 200);
     };
-  }, [raceStatus, radarIndex]);
+  }, [raceStatus]);
 
   return (
     <>
@@ -107,6 +116,7 @@ export default ({ match, className }) => {
           src={positionIndicator}
           className={styles.container__positionIndicator}
           {...positionIndicators[radarIndex % positionIndicators.length]}
+          // {...positionIndicators[22 % positionIndicators.length]}
         />
         <img
           alt="minute"

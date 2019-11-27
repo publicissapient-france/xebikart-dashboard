@@ -11,8 +11,6 @@ import rearIndicator from "./dashboard-xebikart-db3-rear.svg";
 import cover from "./dashboard-xebikart-db3-top.png";
 import radar from "./dashboard-xebikart-db3-radar.png";
 
-import radarDataSet from "../../dataset.json";
-
 import positionIndicators from "./positionIndicator";
 
 const getRearZone = angle => {
@@ -23,14 +21,16 @@ const getRearZone = angle => {
   return require(`./rear-zone-${zoneNumber}.png`);
 };
 
-const normalizeRadarX = radarX => (radarX + 10000) * (220 / 20000) + 40;
-const normalizeRadarY = radarY => (radarY + 10000) * (110 / 20000) + 20;
+// const normalizeRadarX = radarX => (radarX + 10000) * (220 / 20000) + 40;
+// const normalizeRadarY = radarY => (radarY + 10000) * (110 / 20000) + 20;
 
-export default ({ className }) => {
+const normalizeRadarX = radarX => (radarX + 6000) * (220 / 12000) + 40;
+const normalizeRadarY = radarY => (radarY + 6000) * (110 / 12000) + 20;
+
+export default ({ match, className }) => {
   const [radarIndex, setRadarIndex] = useState(0);
   const time = new Date();
   const ref = useRef();
-  let raceStatus;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,17 +39,25 @@ export default ({ className }) => {
     return () => clearInterval(interval);
   });
 
-  const raceData = useSSE("incomingData");
-  if (raceData && raceData.data) {
-    raceStatus = raceData.data;
-  } else {
-    raceStatus = { user: {} };
-  }
+  const raceStatus = useSSE("incomingData", {
+    initialState: {
+      user: {},
+      borders: []
+    },
+    stateReducer: (state, changes) => {
+      if (changes.data.car === parseInt(match.params.carId)) {
+        return changes.data;
+      } else {
+        return state;
+      }
+    }
+  });
 
   useEffect(() => {
-    if (ref.current && ref.current.getContext) {
+    if (raceStatus.borders && ref.current && ref.current.getContext) {
       var ctx = ref.current.getContext("2d");
-      const radarCoords = radarDataSet[radarIndex % 80];
+      // const radarCoords = radarDataSet[radarIndex % 80];
+      const radarCoords = raceStatus.borders;
       ctx.strokeStyle = "rgba(245,0,65,0.8)";
       ctx.fillStyle = "rgba(245,0,65,0.2)";
       ctx.beginPath();
@@ -68,9 +76,9 @@ export default ({ className }) => {
       ctx.fill();
     }
     return () => {
-      ctx.clearRect(0, 0, 300, 200);
+      ctx && ctx.clearRect(0, 0, 300, 200);
     };
-  }, [raceStatus, radarIndex]);
+  }, [raceStatus]);
 
   return (
     <>
@@ -91,12 +99,12 @@ export default ({ className }) => {
         />
         <div className={styles["container__speedCounter--mph"]}>
           {raceStatus.user && raceStatus.user.throttle
-            ? (raceStatus.user.throttle * 200).toFixed(0)
+            ? (raceStatus.user.throttle * 500).toFixed(0)
             : 0}
         </div>
         <div className={styles["container__speedCounter--km"]}>
           {raceStatus.user && raceStatus.user.throttle
-            ? (raceStatus.user.throttle * 200 * 1.61).toFixed(0)
+            ? (raceStatus.user.throttle * 500 * 1.61).toFixed(0)
             : 0}
         </div>
         <div className={styles.container__speedIndicator}>
@@ -110,7 +118,7 @@ export default ({ className }) => {
                   backgroundColor:
                     raceStatus.user &&
                     raceStatus.user.throttle &&
-                    raceStatus.user.throttle >= (index + 1) / 5
+                    raceStatus.user.throttle >= (index + 1) / 30
                       ? "transparent"
                       : "#004b3e"
                 }}

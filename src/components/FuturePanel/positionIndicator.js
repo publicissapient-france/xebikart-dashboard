@@ -81,7 +81,7 @@ export default [{
       width: "3%",
       left: "71.69%",
       top: "10%",
-      transform: "rotate(-45deg"
+      transform: "rotate(-45deg)"
     }
   },
   {
@@ -107,7 +107,7 @@ export default [{
       width: "3%",
       left: "74.6%",
       top: "24%",
-      transform: "rotate(22deg"
+      transform: "rotate(22deg)"
     }
   },
 
@@ -150,7 +150,7 @@ export default [{
       width: "3%",
       left: "74.6%",
       top: "62.2%",
-      transform: "rotate(45deg"
+      transform: "rotate(45deg)"
     }
   },
   {
@@ -177,7 +177,7 @@ export default [{
       width: "3%",
       left: "71.9%",
       top: "76.3%",
-      transform: "rotate(114deg"
+      transform: "rotate(114deg)"
     }
   },
 
@@ -260,7 +260,7 @@ export default [{
       width: "3%",
       left: "60%",
       top: "76.7%",
-      transform: "rotate(134deg"
+      transform: "rotate(134deg)"
     }
   },
   {
