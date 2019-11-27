@@ -22,13 +22,16 @@ export default ({ className }) => {
     },
     stateReducer: (state, changes) => {
       if (changes.data.vote.choice === "1") {
-        confettiExplosion(leftBarRef.current);
+        confettiExplosion(leftBarRef.current, { isUnicorn: false });
         return {
           ...state,
           zombie: state.zombie + 1
         };
       } else if (changes.data.vote.choice === "2") {
-        confettiExplosion(rightBarRef.current, { angle: 135 });
+        confettiExplosion(rightBarRef.current, {
+          isUnicorn: true,
+          reverse: true
+        });
         return {
           ...state,
           unicorn: state.unicorn + 1
@@ -92,14 +95,14 @@ export default ({ className }) => {
             styles.container__bottom__progress,
             styles["container__bottom__progress--left"]
           )}
-          style={{ width: `${votes.zombie / 10}%` }}
+          style={{ width: `${votes.zombie / 20}%` }}
         />
         <div
           className={classnames(
             styles.container__bottom__progress,
             styles["container__bottom__progress--right"]
           )}
-          style={{ width: `${votes.unicorn / 10}%` }}
+          style={{ width: `${votes.unicorn / 20}%` }}
         />
         {Array(20)
           .fill(0)
@@ -108,12 +111,12 @@ export default ({ className }) => {
           ))}
         <div
           ref={leftBarRef}
-          style={{ left: `calc(${votes.zombie / 10}% - 0.75vh)` }}
+          style={{ left: `calc(${votes.zombie / 20}% - 0.75vh)` }}
           className={styles.container__bottom__progressPoint}
         />
         <div
           ref={rightBarRef}
-          style={{ right: `calc(${votes.unicorn / 10}% - 0.75vh)` }}
+          style={{ right: `calc(${votes.unicorn / 20}% - 0.75vh)` }}
           className={styles.container__bottom__progressPoint}
         />
       </div>

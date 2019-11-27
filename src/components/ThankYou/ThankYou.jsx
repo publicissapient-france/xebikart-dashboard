@@ -51,7 +51,11 @@ export default () => {
             <span>Tristan</span>
           </div>
         </div>
-        <img src={top} className={styles.container__image} />
+        <img
+          alt="container__image"
+          src={top}
+          className={styles.container__image}
+        />
         <div className={styles.disclaimer}>
           <span>Disclaimer : Aucune licorne ni zombie n'a été maltraité</span>
         </div>
