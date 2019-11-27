@@ -11,10 +11,11 @@ import PresentPanel from "../PresentPanel/PresentPanel";
 import FuturePanel from "../FuturePanel/FuturePanel";
 import VoteResults from "../VoteResults/VoteResults";
 import Video from "../Video/Video";
+import Image from "../Image/Image";
 import ThankYou from "../ThankYou/ThankYou";
 import Update from "../Update/Update";
 
-export const DASHBOARD_MODES = ["past", "present", "future", "vote", "video", "thankyou", "update"];
+export const DASHBOARD_MODES = ["past", "present", "future", "vote", "video", "thankyou", "update", "image"];
 
 export default ({mode, className}) => {
   const history = useHistory();
@@ -31,6 +32,8 @@ export default ({mode, className}) => {
           history.push(`/${state.data.mode}/${state.data.data.carId}`);
         } else if (state.data.data.videoId) {
           history.push(`/${state.data.mode}/${state.data.data.videoId}`);
+        } else if (state.data.data.imageId) {
+          history.push(`/${state.data.mode}/${state.data.data.imageId}`);
         }
       } else {
         history.push(`/${state.data.mode}`);
@@ -99,6 +102,10 @@ export default ({mode, className}) => {
           <Route
             path="/update"
             component={Update}
+          />
+          <Route
+            path="/image/:imageId"
+            component={Image}
           />
         </SSEProvider>
       </Switch>

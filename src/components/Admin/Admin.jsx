@@ -170,6 +170,29 @@ export default () => {
     }
   };
 
+  const setImageMode = async (mode) => {
+    try {
+      const result = await setMode(mode);
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: result,
+          text: `Set Image ${mode.mode} ${mode.data.imageId}`
+        },
+        ...results,
+      ])
+    } catch (e) {
+      setResults([
+        {
+          timestamp: Date.now(),
+          success: false,
+          text: `Error when setting Image mode`
+        },
+        ...results,
+      ]);
+    }
+  };
+
   const setThankYouMode = async (mode) => {
     try {
       const result = await setMode(mode);
@@ -479,6 +502,13 @@ export default () => {
             className={styles.button}
             onClick={() => setCarMode({mode: 'ai', data: {carId: 1}})}>
             Car AI (1)
+          </button>
+        </li>
+        <li className={styles.thankyou}>
+          <button
+            className={styles.button}
+            onClick={() => setImageMode({mode: 'image', data: {imageId: 'xebicon19.svg'}})}>
+            Image (xebicon19)
           </button>
         </li>
         <li className={styles.thankyou}>
