@@ -1,14 +1,17 @@
 .container {
-  width: 100%;
-  height: 100%;
-  background-color: #0D2922;
   display: flex;
+  align-items: center;
+  background-color: #000000;
+  justify-content: center;
+}
+
+.side {
+  background-color: #000000;
 }
 
 .container__background {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  background-color: #0D2922;
+  position: relative;
 }
 
 .container__contributors {
@@ -23,7 +26,7 @@
 
 .contributors__column {
   font-family: 'Tomorrow';
-  font-size: 2.3vw;
+  font-size: 2.2vw;
   line-height: 150%;
   text-align: center;
   flex-grow: 1;
@@ -59,9 +62,7 @@
 }
 
 .container__image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
 }
 
 @keyframes rotate {
@@ -80,7 +81,7 @@
   text-transform: uppercase;
   background-color: #FF434E;
   position: absolute;
-  bottom: 10%;
+  bottom: 13%;
   width: 100%;
   height: 5%;
   padding-top: 1%;
