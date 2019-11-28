@@ -30,7 +30,7 @@ export default ({ match, className }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setRadarIndex(val => val + 1);
-    }, 100);
+    }, 500);
     return () => clearInterval(interval);
   });
 
