@@ -139,7 +139,7 @@ export default ({ match, className }) => {
         <img alt="cover" src={cover} className={styles.container__cover} />
         <div className={styles.container__month}>NOV</div>
         <div className={styles.container__day}>28</div>
-        <div className={styles.container__year}>1993</div>
+        <div className={styles.container__year}>1989</div>
       </div>
     </>
   );
